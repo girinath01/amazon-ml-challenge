@@ -1,0 +1,235 @@
+{
+  "timestamp": "2026-09-25 11:50:08",
+  "total_elapsed_sec": 63.21,
+  "sources": [
+    {
+      "Dataset": "S1 Train",
+      "Split": "Train",
+      "File": "train_source1.tsv",
+      "Header Valid": true,
+      "Columns": [
+        "entity_id",
+        "business_name",
+        "business_address",
+        "country"
+      ],
+      "Rows": 2206821,
+      "Unique IDs": 2206821,
+      "Duplicate IDs": 0,
+      "Bad Column Count": 0,
+      "Invalid/Empty IDs": 0,
+      "Missing Name": 0,
+      "Missing Name (%)": 0.0,
+      "Missing Address": 0,
+      "Missing Address (%)": 0.0,
+      "Missing Country": 0,
+      "Missing Country (%)": 0.0,
+      "Country Distribution": {
+        "US": 1323633,
+        "India": 883188
+      },
+      "Elapsed Seconds": 3.55
+    },
+    {
+      "Dataset": "S2 Train",
+      "Split": "Train",
+      "File": "train_source2.tsv",
+      "Header Valid": true,
+      "Columns": [
+        "entity_id",
+        "business_name",
+        "business_address",
+        "country"
+      ],
+      "Rows": 5034616,
+      "Unique IDs": 5034616,
+      "Duplicate IDs": 0,
+      "Bad Column Count": 0,
+      "Invalid/Empty IDs": 0,
+      "Missing Name": 0,
+      "Missing Name (%)": 0.0,
+      "Missing Address": 168967,
+      "Missing Address (%)": 3.3561,
+      "Missing Country": 0,
+      "Missing Country (%)": 0.0,
+      "Country Distribution": {
+        "India": 2017799,
+        "US": 3016817
+      },
+      "Elapsed Seconds": 9.48
+    },
+    {
+      "Dataset": "S3 Train",
+      "Split": "Train",
+      "File": "train_source3.tsv",
+      "Header Valid": true,
+      "Columns": [
+        "entity_id",
+        "business_name",
+        "business_address",
+        "country"
+      ],
+      "Rows": 5285603,
+      "Unique IDs": 5285603,
+      "Duplicate IDs": 0,
+      "Bad Column Count": 0,
+      "Invalid/Empty IDs": 0,
+      "Missing Name": 0,
+      "Missing Name (%)": 0.0,
+      "Missing Address": 175916,
+      "Missing Address (%)": 3.3282,
+      "Missing Country": 0,
+      "Missing Country (%)": 0.0,
+      "Country Distribution": {
+        "US": 3170056,
+        "India": 2115547
+      },
+      "Elapsed Seconds": 9.68
+    },
+    {
+      "Dataset": "S1 Test",
+      "Split": "Test",
+      "File": "test_source1.tsv",
+      "Header Valid": true,
+      "Columns": [
+        "entity_id",
+        "business_name",
+        "business_address",
+        "country"
+      ],
+      "Rows": 1732544,
+      "Unique IDs": 1732544,
+      "Duplicate IDs": 0,
+      "Bad Column Count": 0,
+      "Invalid/Empty IDs": 0,
+      "Missing Name": 0,
+      "Missing Name (%)": 0.0,
+      "Missing Address": 0,
+      "Missing Address (%)": 0.0,
+      "Missing Country": 0,
+      "Missing Country (%)": 0.0,
+      "Country Distribution": {
+        "US": 663106,
+        "France": 259452,
+        "India": 809986
+      },
+      "Elapsed Seconds": 2.9
+    },
+    {
+      "Dataset": "S2 Test",
+      "Split": "Test",
+      "File": "test_source2.tsv",
+      "Header Valid": true,
+      "Columns": [
+        "entity_id",
+        "business_name",
+        "business_address",
+        "country"
+      ],
+      "Rows": 4887273,
+      "Unique IDs": 4887273,
+      "Duplicate IDs": 0,
+      "Bad Column Count": 0,
+      "Invalid/Empty IDs": 0,
+      "Missing Name": 0,
+      "Missing Name (%)": 0.0,
+      "Missing Address": 129408,
+      "Missing Address (%)": 2.6479,
+      "Missing Country": 0,
+      "Missing Country (%)": 0.0,
+      "Country Distribution": {
+        "India": 2312565,
+        "France": 703378,
+        "US": 1871330
+      },
+      "Elapsed Seconds": 10.79
+    },
+    {
+      "Dataset": "S3 Test",
+      "Split": "Test",
+      "File": "test_source3.tsv",
+      "Header Valid": true,
+      "Columns": [
+        "entity_id",
+        "business_name",
+        "business_address",
+        "country"
+      ],
+      "Rows": 5082316,
+      "Unique IDs": 5082316,
+      "Duplicate IDs": 0,
+      "Bad Column Count": 0,
+      "Invalid/Empty IDs": 0,
+      "Missing Name": 0,
+      "Missing Name (%)": 0.0,
+      "Missing Address": 136098,
+      "Missing Address (%)": 2.6779,
+      "Missing Country": 0,
+      "Missing Country (%)": 0.0,
+      "Country Distribution": {
+        "India": 2405000,
+        "France": 731615,
+        "US": 1945701
+      },
+      "Elapsed Seconds": 9.76
+    }
+  ],
+  "ground_truth": {
+    "Header Valid": true,
+    "Columns": [
+      "source1_entity_id",
+      "matched_entity_ids"
+    ],
+    "Total GT Rows": 2206821,
+    "Unique S1 in GT": 2206821,
+    "Duplicate S1 in GT": 0,
+    "S1 IDs not in S1 Train": 0,
+    "S1 Train IDs missing from GT": 0,
+    "Malformed S1 IDs": 0,
+    "Total Matched Pairs": 7638365,
+    "Total S2 Matches": 3693619,
+    "Total S3 Matches": 3944746,
+    "Matched S2 IDs missing from S2 Train (Orphans)": 0,
+    "Matched S3 IDs missing from S3 Train (Orphans)": 0,
+    "Malformed Matched IDs": 0,
+    "Duplicate Matched IDs within a Row": 0,
+    "Match Count Distribution": {
+      "0": 123247,
+      "1": 119157,
+      "2": 375212,
+      "3": 530841,
+      "4": 484115,
+      "5": 321957,
+      "6": 164868,
+      "7": 63968,
+      "8": 18680,
+      "9": 4205,
+      "10": 534,
+      "11": 37
+    },
+    "Match Source Distribution": {
+      "both": 1776047,
+      "s3_only": 164498,
+      "zero": 123247,
+      "s2_only": 143029
+    },
+    "Elapsed Seconds": 12.08
+  },
+  "verdict": {
+    "is_data_clean": true,
+    "is_structurally_valid": true,
+    "ready_for_preprocessing": true,
+    "key_findings": [
+      "0 duplicate IDs across all 6 source files (100% unique entity_ids).",
+      "0 missing business names across all 6 source files.",
+      "0 missing countries across all 6 source files.",
+      "Source 1 has 0 missing addresses in both train and test (complete reference set).",
+      "Source 2 and Source 3 have ~2.7% - 3.4% missing addresses that require fallback handling during matching.",
+      "100% referential integrity: Every S1 entity in train has exactly 1 row in ground truth.",
+      "100% target integrity: 0 orphan matched IDs; all matched S2 and S3 IDs exist in their source tables.",
+      "1-to-N matching: Every matched S2 or S3 entity links to at most 1 S1 entity (no M-to-N conflicts).",
+      "Strict country consistency: 0 cross-country matches exist in ground truth.",
+      "Test set includes France (259,452 S1 records, ~15% of test S1) which is absent in train."
+    ]
+  }
+}

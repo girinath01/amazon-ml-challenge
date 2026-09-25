@@ -1,0 +1,41 @@
+{
+  "Header Valid": true,
+  "Columns": [
+    "source1_entity_id",
+    "matched_entity_ids"
+  ],
+  "Total GT Rows": 2206821,
+  "Unique S1 in GT": 2206821,
+  "Duplicate S1 in GT": 0,
+  "S1 IDs not in S1 Train": 0,
+  "S1 Train IDs missing from GT": 0,
+  "Malformed S1 IDs": 0,
+  "Total Matched Pairs": 7638365,
+  "Total S2 Matches": 3693619,
+  "Total S3 Matches": 3944746,
+  "Matched S2 IDs missing from S2 Train (Orphans)": 0,
+  "Matched S3 IDs missing from S3 Train (Orphans)": 0,
+  "Malformed Matched IDs": 0,
+  "Duplicate Matched IDs within a Row": 0,
+  "Match Count Distribution": {
+    "0": 123247,
+    "1": 119157,
+    "2": 375212,
+    "3": 530841,
+    "4": 484115,
+    "5": 321957,
+    "6": 164868,
+    "7": 63968,
+    "8": 18680,
+    "9": 4205,
+    "10": 534,
+    "11": 37
+  },
+  "Match Source Distribution": {
+    "both": 1776047,
+    "s3_only": 164498,
+    "zero": 123247,
+    "s2_only": 143029
+  },
+  "Elapsed Seconds": 12.08
+}

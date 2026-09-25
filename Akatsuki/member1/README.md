@@ -114,3 +114,28 @@ gt_dict = loader.load_ground_truth_dict()
 ```bash
 python member1/data_validation.py --dataset-dir D:/Akatsuki/student_resource/dataset
 ```
+
+---
+
+## Step 2 Deliverables: Preprocessing & Normalization Layer
+
+Member 1 delivers the production preprocessing and normalization framework under `member1/preprocessing/` and `code/business_entity_resolution/src/preprocessing/`:
+
+| File | Purpose |
+|---|---|
+| [`preprocessing/name_normalizer.py`](file:///D:/Akatsuki/member1/preprocessing/name_normalizer.py) | Unicode-safe normalization, legal suffix standardization, `name_core`, `name_tokens`, `name_phonetic` (Soundex). |
+| [`preprocessing/address_normalizer.py`](file:///D:/Akatsuki/member1/preprocessing/address_normalizer.py) | Street abbreviation expansion, conservative house number extraction, postal code extraction, `address_missing` flag. |
+| [`preprocessing/transliteration.py`](file:///D:/Akatsuki/member1/preprocessing/transliteration.py) | High-fidelity Devanagari, Tamil, Telugu, Kannada, Bengali, Gujarati transliteration to Latin ASCII using `anyascii`. |
+| [`preprocessing/country_normalizer.py`](file:///D:/Akatsuki/member1/preprocessing/country_normalizer.py) | Open-set ISO 3166 standardization (`pycountry`), casing/punctuation/alias normalization, diagnostic audit reporting. |
+| [`preprocessing/preprocessor.py`](file:///D:/Akatsuki/member1/preprocessing/preprocessor.py) | Master pipeline combining all normalizers, chunked streaming (`chunksize=50,000`), 16-point mathematical validation. |
+| [`run_member1_complete.py`](file:///D:/Akatsuki/member1/run_member1_complete.py) | Standalone Member 1 execution runner (Step 1 + Step 2) with automated report generation. |
+
+### Running Member 1 Preprocessing Pipeline:
+
+```bash
+# Run benchmark processing (100,000 rows/source)
+python member1/run_member1_complete.py --max-rows 100000
+
+# Run 27-test unit test suite
+python -m unittest tests/test_preprocessing.py
+```

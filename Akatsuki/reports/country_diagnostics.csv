@@ -1,7 +1,7 @@
 original_country,normalized_country,count,is_canonical,is_alias,is_unknown_or_ambiguous
-US,US,217774,True,False,False
-India,India,167243,True,False,False
-France,France,14983,True,False,False
+US,US,2182,True,False,False
+India,India,1690,True,False,False
+France,France,128,True,False,False
 USA,US,1,True,True,False
 United States,US,1,True,True,False
 U.S.A.,US,1,True,True,False

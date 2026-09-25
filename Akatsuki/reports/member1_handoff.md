@@ -1,7 +1,7 @@
 # Member 1 Handoff Document: Preprocessing & Normalization Layer
 **Team Akatsuki — Amazon ML Challenge 2026 (Business Entity Resolution)**
 **Author / Responsibility:** Member 1 (Faizur Rahman — Data Ingestion & Preprocessing)
-**Pipeline Execution Timestamp:** 2026-09-25 13:02:00
+**Pipeline Execution Timestamp:** 2026-09-25 13:20:09
 **Status:** ALL 16 INTEGRITY CHECKS PASSED (100% Zero Data Loss)
 
 ---
@@ -22,9 +22,9 @@ RAW DATA
 ```
 
 ### High-Throughput Performance Metrics
-* **Total Rows Processed in Benchmark Run:** 400,000
-* **Total Execution Time:** 32.81 seconds
-* **Throughput:** **12,192 rows/second**
+* **Total Rows Processed in Benchmark Run:** 4,000
+* **Total Execution Time:** 0.60 seconds
+* **Throughput:** **6,644 rows/second**
 * **Memory Management:** Vectorized operations with streaming chunk iterator (`chunksize=50,000`).
 * **Idempotency & Determinism:** 100% verified. Re-running the pipeline on identical inputs produces bitwise identical data.
 
@@ -64,16 +64,16 @@ Every output file preserves **all original raw columns** and appends **17 standa
 
 | Metric | Source 1 (Reference) | Source 2 (Secondary) | Source 3 (Tertiary) |
 |:---|:---|:---|:---|
-| **Rows Audited** | 100,000 | 100,000 | 100,000 |
-| **Throughput (rows/sec)** | 15,596 | 14,908 | 16,177 |
+| **Rows Audited** | 1,000 | 1,000 | 1,000 |
+| **Throughput (rows/sec)** | 9,971 | 10,930 | 7,346 |
 | **Row Count Preserved** | 100% MATCH | 100% MATCH | 100% MATCH |
 | **ID Referential Integrity** | 100% EXACT ORDER | 100% EXACT ORDER | 100% EXACT ORDER |
 | **Duplicate IDs Introduced** | **0** | **0** | **0** |
 | **Missing Business Names** | **0 (0.00%)** | **0 (0.00%)** | **0 (0.00%)** |
-| **Missing Addresses** | **0 (0.00%)** | **3,330 (3.33%)** | **3,352 (3.35%)** |
-| **House Numbers Extracted** | 93,961 | 87,304 | 87,203 |
-| **Postal Codes Extracted** | 695 | 642 | 809 |
-| **Devanagari / Translit Names** | 0 | 15,061 | 11,664 |
+| **Missing Addresses** | **0 (0.00%)** | **35 (3.5%)** | **37 (3.7%)** |
+| **House Numbers Extracted** | 930 | 876 | 866 |
+| **Postal Codes Extracted** | 12 | 10 | 8 |
+| **Devanagari / Translit Names** | 0 | 146 | 123 |
 | **Validation Verdict** | **PASS** | **PASS** | **PASS** |
 
 ---

@@ -1,10 +1,10 @@
 {
   "pipeline_metadata": {
-    "timestamp": "2026-09-25 13:02:00",
+    "timestamp": "2026-09-25 13:20:09",
     "total_datasets_processed": 4,
-    "total_rows_processed": 400000,
-    "total_elapsed_seconds": 32.809,
-    "overall_rows_per_second": 12191.93,
+    "total_rows_processed": 4000,
+    "total_elapsed_seconds": 0.602,
+    "overall_rows_per_second": 6643.78,
     "python_version": "3.14.2 (tags/v3.14.2:df79316, Dec  5 2025, 17:18:21) [MSC v.1944 64 bit (AMD64)]"
   },
   "datasets": {
@@ -12,36 +12,36 @@
       "general": {
         "dataset_name": "S1",
         "input_file": "D:\\Akatsuki\\student_resource\\dataset\\train\\train_source1.tsv",
-        "output_file": "D:\\Akatsuki\\output\\preprocessed\\s1_normalized.tsv",
-        "total_rows": 100000,
-        "processing_time_seconds": 6.412,
-        "rows_per_second": 15595.59
+        "output_file": "D:\\Akatsuki\\amazon-ml-challenge\\Akatsuki\\output\\preprocessed\\s1_normalized.tsv",
+        "total_rows": 1000,
+        "processing_time_seconds": 0.1,
+        "rows_per_second": 9971.1
       },
       "name": {
         "missing_names": 0,
-        "unique_raw_names": 90403,
-        "unique_normalized_names": 88611,
-        "unique_core_names": 82922,
-        "names_containing_digits": 1594,
+        "unique_raw_names": 1000,
+        "unique_normalized_names": 1000,
+        "unique_core_names": 995,
+        "names_containing_digits": 13,
         "names_requiring_transliteration": 0,
-        "transliteration_success_count": 100000,
+        "transliteration_success_count": 1000,
         "transliteration_failure_count": 0
       },
       "address": {
         "missing_addresses": 0,
         "percentage_missing": 0.0,
-        "unique_normalized_addresses": 99711,
-        "addresses_containing_digits": 96547,
-        "rows_with_extracted_house_numbers": 93961,
-        "rows_with_extracted_postal_codes": 695,
-        "rows_with_multiple_numeric_tokens": 28283
+        "unique_normalized_addresses": 1000,
+        "addresses_containing_digits": 959,
+        "rows_with_extracted_house_numbers": 930,
+        "rows_with_extracted_postal_codes": 12,
+        "rows_with_multiple_numeric_tokens": 285
       },
       "country": {
         "unique_raw_country_values": 2,
         "unique_normalized_country_values": 2,
         "recognized_countries": {
-          "US": 59890,
-          "India": 40110
+          "US": 595,
+          "India": 405
         },
         "unknown_country_values": 0,
         "ambiguous_values": 0
@@ -62,36 +62,36 @@
       "general": {
         "dataset_name": "S2",
         "input_file": "D:\\Akatsuki\\student_resource\\dataset\\train\\train_source2.tsv",
-        "output_file": "D:\\Akatsuki\\output\\preprocessed\\s2_normalized.tsv",
-        "total_rows": 100000,
-        "processing_time_seconds": 6.708,
-        "rows_per_second": 14907.71
+        "output_file": "D:\\Akatsuki\\amazon-ml-challenge\\Akatsuki\\output\\preprocessed\\s2_normalized.tsv",
+        "total_rows": 1000,
+        "processing_time_seconds": 0.091,
+        "rows_per_second": 10929.84
       },
       "name": {
         "missing_names": 0,
-        "unique_raw_names": 98731,
-        "unique_normalized_names": 97485,
-        "unique_core_names": 94595,
-        "names_containing_digits": 5105,
-        "names_requiring_transliteration": 15061,
-        "transliteration_success_count": 100000,
+        "unique_raw_names": 1000,
+        "unique_normalized_names": 1000,
+        "unique_core_names": 999,
+        "names_containing_digits": 56,
+        "names_requiring_transliteration": 146,
+        "transliteration_success_count": 1000,
         "transliteration_failure_count": 0
       },
       "address": {
-        "missing_addresses": 3330,
-        "percentage_missing": 3.33,
-        "unique_normalized_addresses": 96194,
-        "addresses_containing_digits": 90671,
-        "rows_with_extracted_house_numbers": 87304,
-        "rows_with_extracted_postal_codes": 642,
-        "rows_with_multiple_numeric_tokens": 26500
+        "missing_addresses": 35,
+        "percentage_missing": 3.5,
+        "unique_normalized_addresses": 966,
+        "addresses_containing_digits": 917,
+        "rows_with_extracted_house_numbers": 876,
+        "rows_with_extracted_postal_codes": 10,
+        "rows_with_multiple_numeric_tokens": 269
       },
       "country": {
         "unique_raw_country_values": 2,
         "unique_normalized_country_values": 2,
         "recognized_countries": {
-          "US": 59936,
-          "India": 40064
+          "US": 604,
+          "India": 396
         },
         "unknown_country_values": 0,
         "ambiguous_values": 0
@@ -112,36 +112,36 @@
       "general": {
         "dataset_name": "S3",
         "input_file": "D:\\Akatsuki\\student_resource\\dataset\\train\\train_source3.tsv",
-        "output_file": "D:\\Akatsuki\\output\\preprocessed\\s3_normalized.tsv",
-        "total_rows": 100000,
-        "processing_time_seconds": 6.182,
-        "rows_per_second": 16176.82
+        "output_file": "D:\\Akatsuki\\amazon-ml-challenge\\Akatsuki\\output\\preprocessed\\s3_normalized.tsv",
+        "total_rows": 1000,
+        "processing_time_seconds": 0.136,
+        "rows_per_second": 7345.82
       },
       "name": {
         "missing_names": 0,
-        "unique_raw_names": 98835,
-        "unique_normalized_names": 97652,
-        "unique_core_names": 94878,
-        "names_containing_digits": 5112,
-        "names_requiring_transliteration": 11664,
-        "transliteration_success_count": 100000,
+        "unique_raw_names": 1000,
+        "unique_normalized_names": 1000,
+        "unique_core_names": 1000,
+        "names_containing_digits": 50,
+        "names_requiring_transliteration": 123,
+        "transliteration_success_count": 1000,
         "transliteration_failure_count": 0
       },
       "address": {
-        "missing_addresses": 3352,
-        "percentage_missing": 3.35,
-        "unique_normalized_addresses": 96314,
-        "addresses_containing_digits": 90660,
-        "rows_with_extracted_house_numbers": 87203,
-        "rows_with_extracted_postal_codes": 809,
-        "rows_with_multiple_numeric_tokens": 29048
+        "missing_addresses": 37,
+        "percentage_missing": 3.7,
+        "unique_normalized_addresses": 964,
+        "addresses_containing_digits": 908,
+        "rows_with_extracted_house_numbers": 866,
+        "rows_with_extracted_postal_codes": 8,
+        "rows_with_multiple_numeric_tokens": 295
       },
       "country": {
         "unique_raw_country_values": 2,
         "unique_normalized_country_values": 2,
         "recognized_countries": {
-          "US": 59529,
-          "India": 40471
+          "US": 593,
+          "India": 407
         },
         "unknown_country_values": 0,
         "ambiguous_values": 0
@@ -162,37 +162,37 @@
       "general": {
         "dataset_name": "S1_Test_France",
         "input_file": "D:\\Akatsuki\\student_resource\\dataset\\test\\test_source1.tsv",
-        "output_file": "D:\\Akatsuki\\output\\preprocessed\\s1_test_sample_normalized.tsv",
-        "total_rows": 100000,
-        "processing_time_seconds": 6.255,
-        "rows_per_second": 15987.49
+        "output_file": "D:\\Akatsuki\\amazon-ml-challenge\\Akatsuki\\output\\preprocessed\\s1_test_sample_normalized.tsv",
+        "total_rows": 1000,
+        "processing_time_seconds": 0.093,
+        "rows_per_second": 10706.75
       },
       "name": {
         "missing_names": 0,
-        "unique_raw_names": 90433,
-        "unique_normalized_names": 88686,
-        "unique_core_names": 83250,
-        "names_containing_digits": 1185,
-        "names_requiring_transliteration": 2320,
-        "transliteration_success_count": 100000,
+        "unique_raw_names": 999,
+        "unique_normalized_names": 999,
+        "unique_core_names": 998,
+        "names_containing_digits": 12,
+        "names_requiring_transliteration": 17,
+        "transliteration_success_count": 1000,
         "transliteration_failure_count": 0
       },
       "address": {
         "missing_addresses": 0,
         "percentage_missing": 0.0,
-        "unique_normalized_addresses": 99633,
-        "addresses_containing_digits": 95899,
-        "rows_with_extracted_house_numbers": 93285,
-        "rows_with_extracted_postal_codes": 514,
-        "rows_with_multiple_numeric_tokens": 27716
+        "unique_normalized_addresses": 1000,
+        "addresses_containing_digits": 963,
+        "rows_with_extracted_house_numbers": 939,
+        "rows_with_extracted_postal_codes": 1,
+        "rows_with_multiple_numeric_tokens": 291
       },
       "country": {
         "unique_raw_country_values": 3,
         "unique_normalized_country_values": 3,
         "recognized_countries": {
-          "India": 46598,
-          "US": 38419,
-          "France": 14983
+          "India": 482,
+          "US": 390,
+          "France": 128
         },
         "unknown_country_values": 0,
         "ambiguous_values": 0

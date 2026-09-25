@@ -1,6 +1,11 @@
 # Pinned dependencies / environment
 pandas>=2.2.0
 numpy>=1.26.0
+scipy>=1.18.0
 scikit-learn>=1.4.0
 anyascii>=0.3.3
 pycountry>=26.2.16
+rapidfuzz>=3.14.0
+pyarrow>=25.0.0
+tqdm>=4.70.0
+lightgbm>=4.7.0

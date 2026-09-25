@@ -68,12 +68,20 @@ class TestNameNormalization(unittest.TestCase):
         self.assertIn("ltd", res["name_norm"])
         self.assertEqual(res["name_core"], "राम मार्केटिंग")
 
+    def test_phonetic_soundex(self):
+        res1 = self.normalizer.normalize_single("Smith Corp")
+        res2 = self.normalizer.normalize_single("Smyth Inc")
+        self.assertEqual(res1["name_phonetic"], "S530")
+        self.assertEqual(res2["name_phonetic"], "S530")
+        self.assertEqual(res1["name_phonetic"], res2["name_phonetic"])
+
     def test_empty_and_null_name(self):
         for empty_val in ["", "   ", None, float("nan")]:
             res = self.normalizer.normalize_single(empty_val)
             self.assertEqual(res["name_norm"], "")
             self.assertEqual(res["name_core"], "")
             self.assertEqual(res["name_tokens"], [])
+            self.assertEqual(res["name_phonetic"], "")
             self.assertFalse(res["name_has_digits"])
             self.assertEqual(res["name_length"], 0)
 

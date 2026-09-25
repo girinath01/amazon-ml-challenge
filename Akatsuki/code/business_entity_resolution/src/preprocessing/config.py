@@ -39,6 +39,7 @@ NAME_OUTPUT_COLS = [
     "name_norm",
     "name_core",
     "name_tokens",
+    "name_sorted_tokens",
     "name_translit",
     "name_phonetic",
     "name_has_digits",

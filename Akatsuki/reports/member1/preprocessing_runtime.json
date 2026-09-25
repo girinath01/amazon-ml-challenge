@@ -1,0 +1,16 @@
+{
+  "S1 rows": 250000,
+  "S1 runtime": "34.85s",
+  "S2 rows": 250000,
+  "S2 runtime": "29.28s",
+  "S3 rows": 250000,
+  "S3 runtime": "24.27s",
+  "total runtime": "88.4s",
+  "rows lost": 0,
+  "rows duplicated": 0,
+  "total rows processed": 750000,
+  "overall throughput rows per sec": 8484.0,
+  "peak memory mb": 624.3,
+  "input row count == output row count": true,
+  "all required fields present": true
+}

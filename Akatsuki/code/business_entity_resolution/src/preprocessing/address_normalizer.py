@@ -101,13 +101,13 @@ class AddressNormalizer:
         self._re_any_code = re.compile(r"\b(\d{5,6})\b")
 
         # House / Door / Building number patterns:
-        # 1. Door / Shop / Plot / Flat / House number prefixes
+        # 1. Door / Shop / Plot / Flat / House number prefixes (supports sub-unit letters like 16-11-23/37/A, 42/B, 102A)
         self._re_prefix_num = re.compile(
-            r"\b(?:d(?:oor)?\.?\s*no\.?|shop\s*no\.?|plot\s*no\.?|flat\s*no\.?|sf\s*no\.?|house\s*no\.?|h\.?\s*no\.?)\s*([0-9]+(?:[\-\/][0-9]+)*)",
+            r"\b(?:d(?:oor)?\.?\s*no\.?|shop\s*no\.?|plot\s*no\.?|flat\s*no\.?|sf\s*no\.?|house\s*no\.?|h\.?\s*no\.?)\s*([0-9]+[a-zA-Z]?(?:[\-\/][0-9a-zA-Z]+)*)",
             re.IGNORECASE,
         )
-        # 2. Leading number at the start of the address
-        self._re_opening_num = re.compile(r"^\s*([0-9]+(?:[\-\/][0-9]+)*)\b")
+        # 2. Leading number at the start of the address (e.g. 1400 e main st, 20b rue parmentier)
+        self._re_opening_num = re.compile(r"^\s*([0-9]+[a-zA-Z]?(?:[\-\/][0-9a-zA-Z]+)*)\b")
         # 3. Inverted address number followed by street name and street type
         street_types = (
             r"street|st|road|rd|avenue|ave|drive|dr|court|ct|boulevard|blvd|bd|"

@@ -7,6 +7,7 @@ Output Fields:
 - name_norm: Standardized name with canonicalized legal forms and cleaned punctuation.
 - name_core: Core business name with legal entity forms and prefixes/suffixes stripped.
 - name_tokens: List of normalized word tokens.
+- name_sorted_tokens: Alphabetically sorted word tokens joined by space (word-order invariant).
 - name_translit: Unicode-decomposed / diacritic-stripped representation.
 - name_has_digits: Boolean flag indicating presence of digits.
 - name_length: Character length of name_norm.
@@ -165,6 +166,7 @@ class BusinessNameNormalizer:
                 "name_norm": "",
                 "name_core": "",
                 "name_tokens": [],
+                "name_sorted_tokens": "",
                 "name_translit": "",
                 "name_phonetic": "",
                 "name_has_digits": False,
@@ -233,8 +235,9 @@ class BusinessNameNormalizer:
         if not name_core:
             name_core = name_norm
 
-        # 9. Token list
+        # 9. Token list & word-order invariant sorted tokens
         name_tokens: List[str] = norm_tokens
+        name_sorted_tokens: str = " ".join(sorted(norm_tokens))
 
         # 10. Phonetic Soundex representation
         name_phonetic: str = compute_soundex(name_core)
@@ -244,6 +247,7 @@ class BusinessNameNormalizer:
             "name_norm": name_norm,
             "name_core": name_core,
             "name_tokens": name_tokens,
+            "name_sorted_tokens": name_sorted_tokens,
             "name_translit": name_translit,
             "name_phonetic": name_phonetic,
             "name_has_digits": has_digits,

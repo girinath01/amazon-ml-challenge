@@ -15,7 +15,7 @@ RAW DATA
 -> MEMBER 2/3 HANDOFF
 
 Produces:
-- NAME: name_raw, name_norm, name_core, name_tokens, name_translit, name_has_digits, name_length
+- NAME: name_raw, name_norm, name_core, name_tokens, name_sorted_tokens, name_translit, name_has_digits, name_length
 - ADDRESS: address_raw, address_norm, address_tokens, address_numbers, house_number, postal_code, address_has_digits, address_missing, address_length
 - COUNTRY: country_norm
 """
@@ -128,6 +128,7 @@ class EntityPreprocessor:
         res_df["name_norm"] = name_norm_df["name_norm"].values
         res_df["name_core"] = name_norm_df["name_core"].values
         res_df["name_tokens"] = name_norm_df["name_tokens"].values
+        res_df["name_sorted_tokens"] = name_norm_df["name_sorted_tokens"].values
         res_df["name_translit"] = translit_df["name_translit"].values
         res_df["name_phonetic"] = name_norm_df["name_phonetic"].values
         res_df["name_has_digits"] = name_norm_df["name_has_digits"].values
@@ -200,7 +201,7 @@ class EntityPreprocessor:
 
         # 6. Required normalized columns exist
         required_cols = [
-            "name_raw", "name_norm", "name_core", "name_tokens", "name_translit",
+            "name_raw", "name_norm", "name_core", "name_tokens", "name_sorted_tokens", "name_translit",
             "name_has_digits", "name_length",
             "address_raw", "address_norm", "address_tokens", "address_numbers",
             "house_number", "postal_code", "address_has_digits", "address_missing", "address_length",

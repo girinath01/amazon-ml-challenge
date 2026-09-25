@@ -1,9 +1,9 @@
 metric,value
 total_s1_records,1000.0
-total_candidate_pairs,15806.0
-mean_candidates_per_s1,15.806
-median_candidates_per_s1,11.0
-p95_candidates_per_s1,48.0
-p99_candidates_per_s1,64.00999999999999
-max_candidates_per_s1,85.0
-zero_candidate_s1_count,44.0
+total_candidate_pairs,31875.0
+mean_candidates_per_s1,31.875
+median_candidates_per_s1,28.0
+p95_candidates_per_s1,78.0
+p99_candidates_per_s1,99.0
+max_candidates_per_s1,109.0
+zero_candidate_s1_count,24.0

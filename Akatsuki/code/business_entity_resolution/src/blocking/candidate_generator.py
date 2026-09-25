@@ -37,7 +37,7 @@ def run_candidate_generation_pipeline(
     max_total_per_s1: int = 200,
 ) -> Tuple[pd.DataFrame, pd.DataFrame, Dict[str, float]]:
     """
-    Runs the multi-pass blocking pipeline across preprocessed S1, S2, and S3 DataFrames.
+    Runs the upgraded multi-pass blocking pipeline across preprocessed S1, S2, and S3 DataFrames.
     
     Args:
         df_s1: Preprocessed Source 1 DataFrame
@@ -66,26 +66,26 @@ def run_candidate_generation_pipeline(
     timing_dict["country_partition"] = time.time() - t0
 
     # -------------------------------------------------------------
-    # Pass B0 / B1 — Exact Name & Core Name Blocking
+    # Pass B0 / B1 — Exact Name, Core Name & Sorted Tokens Matching
     # -------------------------------------------------------------
     if "b0" in passes_to_run or "b1" in passes_to_run:
         t0 = time.time()
-        logger.info("Executing Pass B0/B1: Exact Name & Core Name Blocking...")
-        exact_idx, core_idx = build_name_indexes(df_s2, df_s3)
+        logger.info("Executing Pass B0/B1: Exact, Core & Sorted Tokens Name Blocking...")
+        exact_idx, core_idx, sorted_idx = build_name_indexes(df_s2, df_s3)
 
-        cand_exact, cand_core = block_exact_and_core_name(df_s1, exact_idx, core_idx)
+        cand_exact, cand_core = block_exact_and_core_name(df_s1, exact_idx, core_idx, sorted_idx)
         pass_results["block_exact_name"] = cand_exact
         pass_results["block_core"] = cand_core
         timing_dict["b0_b1_exact_name"] = time.time() - t0
 
     # -------------------------------------------------------------
-    # Pass B1 — Rare Token Blocking
+    # Pass B1 — Rare Token & Short Name Deletion-Hash Blocking
     # -------------------------------------------------------------
     if "b1" in passes_to_run:
         t0 = time.time()
-        logger.info("Executing Pass B1: Rare Token Blocking...")
-        rare_idx, _ = build_rare_token_index(df_s2, df_s3, max_doc_freq=50)
-        cand_rare = block_rare_tokens(df_s1, rare_idx, max_candidates_per_s1=50)
+        logger.info("Executing Pass B1: Rare Token & Deletion-Hash Blocking...")
+        rare_idx, _, del_idx = build_rare_token_index(df_s2, df_s3, max_doc_freq=50)
+        cand_rare = block_rare_tokens(df_s1, rare_idx, del_idx, max_candidates_per_s1=50)
         pass_results["block_rare_token"] = cand_rare
         timing_dict["b1_rare_token"] = time.time() - t0
 
@@ -115,26 +115,26 @@ def run_candidate_generation_pipeline(
         timing_dict["b3_transliteration"] = time.time() - t0
 
     # -------------------------------------------------------------
-    # Pass B4 — ANN Vector Retrieval (TF-IDF Cosine)
+    # Pass B4 — Hybrid Word+Char TF-IDF Vector Retrieval
     # -------------------------------------------------------------
     if "b4" in passes_to_run:
         t0 = time.time()
-        logger.info("Executing Pass B4: ANN Vector Retrieval...")
+        logger.info("Executing Pass B4: Hybrid Word+Char TF-IDF Vector Retrieval...")
         cand_ann = build_and_query_ann_per_country(
-            df_s1, df_s2, df_s3, top_k=30, min_similarity=0.55
+            df_s1, df_s2, df_s3, top_k=30, min_similarity=0.50
         )
         pass_results["block_ann"] = cand_ann
         timing_dict["b4_ann"] = time.time() - t0
 
     # -------------------------------------------------------------
-    # Pass B5 — Union & Controlled Pruning
+    # Pass B5 — Union & Adaptive Pruning
     # -------------------------------------------------------------
     t0 = time.time()
-    logger.info("Executing Pass B5: Candidate Union & Budget Pruning...")
+    logger.info("Executing Pass B5: Candidate Union & Adaptive Budget Pruning...")
     df_long = union_candidate_passes(pass_results, all_s1_ids)
 
     df_long_pruned = prune_candidate_matrix(
-        df_long, max_total_per_s1=max_total_per_s1
+        df_long, max_total_per_s1=max_total_per_s1, adaptive_pruning=True
     )
 
     df_tsv = format_to_tsv(df_long_pruned, all_s1_ids)

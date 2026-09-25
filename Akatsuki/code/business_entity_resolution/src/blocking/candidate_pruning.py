@@ -1,20 +1,17 @@
 """
 blocking/candidate_pruning.py
 ------------------------------
-Blocking Pass B5 — Frequency-aware Candidate Pruning & Budget Capping.
+Blocking Pass B5 — Adaptive Candidate Pruning & Budget Capping.
 
 Enforces:
-1. Per-route budget caps (e.g., max 50 candidates from address pass alone)
-2. Total candidate cap per S1 (e.g., max 200 candidates per S1 entity)
-3. Priority ordering across blocking passes when pruning:
+1. Priority ordering across blocking passes:
    Exact Name > Core Name > Rare Token > Transliteration > Address > Numeric > ANN
+2. Adaptive candidate budgeting based on address availability & match quality.
 """
 
 from typing import Dict, List, Optional, Set
 import pandas as pd
 
-
-# Default priority rank for blocking passes (lower number = higher priority)
 PASS_PRIORITY = {
     "block_exact_name": 1,
     "block_core": 2,
@@ -29,15 +26,15 @@ PASS_PRIORITY = {
 def prune_candidate_matrix(
     df_candidates: pd.DataFrame,
     max_total_per_s1: int = 200,
-    per_route_caps: Optional[Dict[str, int]] = None,
+    adaptive_pruning: bool = True,
 ) -> pd.DataFrame:
     """
-    Prunes long-form candidate DataFrame according to route caps and overall per-S1 limits.
+    Prunes long-form candidate DataFrame using priority scoring and adaptive budget allocation.
     
     Args:
         df_candidates: DataFrame output of candidate_union
-        max_total_per_s1: Hard ceiling on maximum candidates per S1 entity
-        per_route_caps: Dict[pass_name -> max candidates allowed from this pass]
+        max_total_per_s1: Default ceiling on maximum candidates per S1 entity
+        adaptive_pruning: If True, dynamically adjusts budget based on match strength
         
     Returns:
         Pruned DataFrame with identical schema
@@ -45,38 +42,38 @@ def prune_candidate_matrix(
     if df_candidates.empty:
         return df_candidates
 
-    if per_route_caps is None:
-        per_route_caps = {
-            "block_exact_name": 100,
-            "block_core": 100,
-            "block_rare_token": 50,
-            "block_translit": 50,
-            "block_address": 50,
-            "block_numeric": 30,
-            "block_ann": 30,
-        }
-
     flag_cols = [c for c in df_candidates.columns if c.startswith("block_")]
 
-    # Calculate min pass priority for sorting each candidate
     def get_candidate_priority(row):
         priorities = [PASS_PRIORITY.get(col, 99) for col in flag_cols if row[col]]
-        return min(priorities) if priorities else 99
+        # Give extra boost if candidate matches multiple passes simultaneously
+        num_passes = sum(1 for col in flag_cols if row[col])
+        base_priority = min(priorities) if priorities else 99
+        return base_priority - (0.1 * num_passes)
 
     df_candidates["_priority"] = df_candidates.apply(get_candidate_priority, axis=1)
 
     pruned_dfs = []
 
     for s1_id, group in df_candidates.groupby("source1_id", sort=False):
-        if len(group) <= max_total_per_s1:
+        has_address_match = False
+        if "block_address" in group.columns and (group["block_address"] == True).any():
+            has_address_match = True
+
+        # Adaptive budget limit:
+        # High confidence address matches -> tight cap (75) to save downstream RAM
+        # Low confidence / name-only -> larger cap (max_total_per_s1) for maximum recall
+        effective_limit = max_total_per_s1
+        if adaptive_pruning and has_address_match and len(group) > 75:
+            effective_limit = min(max_total_per_s1, 100)
+
+        if len(group) <= effective_limit:
             pruned_dfs.append(group)
             continue
 
         # Sort group by priority (highest priority first)
         group_sorted = group.sort_values(by="_priority", ascending=True)
-
-        # Enforce total limit
-        group_pruned = group_sorted.iloc[:max_total_per_s1]
+        group_pruned = group_sorted.iloc[:effective_limit]
         pruned_dfs.append(group_pruned)
 
     result_df = pd.concat(pruned_dfs, ignore_index=True)

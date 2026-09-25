@@ -1,0 +1,194 @@
+{
+  "row_counts": {
+    "train": {
+      "S1": 2206821,
+      "S2": 5034616,
+      "S3": 5285603
+    },
+    "test": {
+      "S1": 1732544,
+      "S2": 4887273,
+      "S3": 5082316
+    }
+  },
+  "missing_pct": {
+    "S1_train": {
+      "business_name": 0.0,
+      "business_address": 0.0,
+      "country": 0.0
+    },
+    "S2_train": {
+      "business_name": 0.0,
+      "business_address": 3.36,
+      "country": 0.0
+    },
+    "S3_train": {
+      "business_name": 0.0,
+      "business_address": 3.33,
+      "country": 0.0
+    },
+    "S1_test": {
+      "business_name": 0.0,
+      "business_address": 0.0,
+      "country": 0.0
+    },
+    "S2_test": {
+      "business_name": 0.0,
+      "business_address": 2.65,
+      "country": 0.0
+    },
+    "S3_test": {
+      "business_name": 0.0,
+      "business_address": 2.68,
+      "country": 0.0
+    }
+  },
+  "duplicate_ids": {
+    "S1_train": 0,
+    "S2_train": 0,
+    "S3_train": 0,
+    "S1_test": 0,
+    "S2_test": 0,
+    "S3_test": 0
+  },
+  "name": {
+    "S1_train": {
+      "count": 2206821,
+      "unique": 1539229,
+      "dup_pct": 30.25,
+      "avg_len": 24.03,
+      "median_len": 24.0,
+      "min_len": 3,
+      "max_len": 105
+    },
+    "S2_train": {
+      "count": 5034614,
+      "unique": 4402008,
+      "dup_pct": 12.57,
+      "avg_len": 25.1,
+      "median_len": 25.0,
+      "min_len": 2,
+      "max_len": 104
+    },
+    "S3_train": {
+      "count": 5285590,
+      "unique": 4651608,
+      "dup_pct": 11.99,
+      "avg_len": 25.2,
+      "median_len": 25.0,
+      "min_len": 2,
+      "max_len": 123
+    },
+    "S1_test": {
+      "count": 1732544,
+      "unique": 1238867,
+      "dup_pct": 28.49,
+      "avg_len": 23.84,
+      "median_len": 24.0,
+      "min_len": 3,
+      "max_len": 92
+    }
+  },
+  "address": {
+    "S1_train": {
+      "count": 2206821,
+      "avg_len": 52.07,
+      "median_len": 41.0,
+      "min_len": 11,
+      "max_len": 256,
+      "digit_pct": 96.51,
+      "postcode_pct": 6.67
+    },
+    "S2_train": {
+      "count": 4865649,
+      "avg_len": 47.83,
+      "median_len": 37.0,
+      "min_len": 8,
+      "max_len": 249,
+      "digit_pct": 93.79,
+      "postcode_pct": 7.59
+    },
+    "S3_train": {
+      "count": 5109687,
+      "avg_len": 48.32,
+      "median_len": 42.0,
+      "min_len": 2,
+      "max_len": 240,
+      "digit_pct": 93.93,
+      "postcode_pct": 7.55
+    },
+    "S1_test": {
+      "count": 1732544,
+      "avg_len": 57.21,
+      "median_len": 50.0,
+      "min_len": 11,
+      "max_len": 268,
+      "digit_pct": 95.85,
+      "postcode_pct": 4.37
+    }
+  },
+  "country": {
+    "S1_train": {
+      "US": 1323633,
+      "India": 883188
+    },
+    "S2_train": {
+      "US": 3016817,
+      "India": 2017799
+    },
+    "S3_train": {
+      "US": 3170056,
+      "India": 2115547
+    },
+    "S1_test": {
+      "India": 809986,
+      "US": 663106,
+      "France": 259452
+    },
+    "S2_test": {
+      "India": 2312565,
+      "US": 1871330,
+      "France": 703378
+    },
+    "S3_test": {
+      "India": 2405000,
+      "US": 1945701,
+      "France": 731615
+    },
+    "unique_train": [
+      "India",
+      "US"
+    ],
+    "unique_test": [
+      "France",
+      "India",
+      "US"
+    ],
+    "france_in_test": true
+  },
+  "ground_truth": {
+    "total_s1_entities": 2206821,
+    "zero_match": 123247,
+    "one_match": 119157,
+    "multi_match": 1964417,
+    "src_category": {
+      "both": 1776047,
+      "S3_only": 164498,
+      "S2_only": 143029
+    },
+    "avg_matches": 3.461,
+    "max_matches": 11
+  },
+  "noise_patterns": {
+    "corp_variants": 451183,
+    "pvt_variants": 2131313,
+    "ltd_variants": 2699409,
+    "inc_variants": 1106422,
+    "llc_variants": 1455401,
+    "and_ampersand": 537910,
+    "road_abbrev": 676918,
+    "road_full": 1750197,
+    "street_abbrev": 681083,
+    "street_full": 1003784
+  }
+}

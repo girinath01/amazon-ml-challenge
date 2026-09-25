@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Member 2 EDA Report — Akatsuki</title>
+<style>
+  :root {
+    --bg:#0F0F1A; --card:#1A1A2E; --border:#3A3A5C;
+    --text:#E0E0FF; --muted:#A0A0CC; --accent:#6C63FF;
+    --pink:#FF6584; --green:#43B89C; --gold:#FFBE0B;
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { background:var(--bg); color:var(--text); font-family:'Segoe UI',sans-serif; padding:40px 24px; }
+  h1   { font-size:2rem; color:var(--accent); margin-bottom:6px; }
+  h2   { font-size:1.3rem; color:var(--gold); margin:32px 0 12px; border-bottom:1px solid var(--border); padding-bottom:6px; }
+  h3   { font-size:1.05rem; color:var(--green); margin:18px 0 8px; }
+  p,li { color:var(--muted); line-height:1.7; font-size:.93rem; }
+  .subtitle { color:var(--muted); font-size:.9rem; margin-bottom:32px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:16px; margin:16px 0; }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px; }
+  .card h3 { color:var(--accent); margin:0 0 10px; font-size:.95rem; }
+  .stat { display:flex; justify-content:space-between; padding:5px 0; border-bottom:1px solid var(--border); }
+  .stat:last-child { border-bottom:none; }
+  .stat .label { color:var(--muted); font-size:.85rem; }
+  .stat .value { color:var(--text); font-weight:600; font-size:.85rem; }
+  .badge { display:inline-block; padding:2px 8px; border-radius:20px; font-size:.78rem; font-weight:700; }
+  .badge-ok   { background:#1a3a2e; color:var(--green); }
+  .badge-warn { background:#3a2a1a; color:var(--gold); }
+  .badge-bad  { background:#3a1a2e; color:var(--pink); }
+  img { max-width:100%; border-radius:10px; border:1px solid var(--border); margin:12px 0; }
+  table { width:100%; border-collapse:collapse; margin:12px 0; font-size:.88rem; }
+  th { background:var(--card); color:var(--accent); padding:10px 12px; text-align:left; border:1px solid var(--border); }
+  td { padding:8px 12px; border:1px solid var(--border); color:var(--muted); }
+  tr:nth-child(even) td { background:#16162A; }
+  .highlight { color:var(--gold); font-weight:700; }
+  ul { padding-left:20px; margin:8px 0; }
+  .conclusion { background:var(--card); border-left:4px solid var(--accent); border-radius:8px; padding:16px 20px; margin:16px 0; }
+  .conclusion p { color:var(--text); }
+</style>
+</head>
+<body>
+<h1>Member 2 — Exploratory Data Analysis Report</h1>
+<p class="subtitle">Amazon ML Challenge 2026 · Business Entity Resolution · Team Akatsuki</p>
+
+<h2>1. Dataset Overview — Row Counts</h2>
+<div class="grid">
+  <div class="card">
+    <h3>Train Set</h3>
+    <div class="stat"><span class="label">Source 1 records</span><span class="value highlight">2,206,821</span></div>
+    <div class="stat"><span class="label">Source 2 records</span><span class="value highlight">5,034,616</span></div>
+    <div class="stat"><span class="label">Source 3 records</span><span class="value highlight">5,285,603</span></div>
+    <div class="stat"><span class="label">Total train records</span><span class="value">12,527,040</span></div>
+  </div>
+  <div class="card">
+    <h3>Test Set</h3>
+    <div class="stat"><span class="label">Source 1 records</span><span class="value highlight">1,732,544</span></div>
+    <div class="stat"><span class="label">Source 2 records</span><span class="value highlight">4,887,273</span></div>
+    <div class="stat"><span class="label">Source 3 records</span><span class="value highlight">5,082,316</span></div>
+    <div class="stat"><span class="label">Total test records</span><span class="value">11,702,133</span></div>
+  </div>
+  <div class="card">
+    <h3>Ground Truth (Train)</h3>
+    <div class="stat"><span class="label">S1 entities</span><span class="value">2,206,821</span></div>
+    <div class="stat"><span class="label">Zero matches (singletons)</span><span class="value">123,247</span></div>
+    <div class="stat"><span class="label">One match</span><span class="value">119,157</span></div>
+    <div class="stat"><span class="label">Multiple matches</span><span class="value">1,964,417</span></div>
+    <div class="stat"><span class="label">Avg matches per S1</span><span class="value">3.461</span></div>
+    <div class="stat"><span class="label">Max matches for one S1</span><span class="value">11</span></div>
+  </div>
+</div>
+
+<h2>2. Missing Value Analysis</h2>
+<img src="plots/missing_values.png" alt="Missing Values Heatmap">
+<table>
+  <tr><th>Source</th><th>business_name missing %</th><th>business_address missing %</th><th>country missing %</th></tr>
+  <tr><td>S1_train</td><td>0.0%</td><td>0.0%</td><td>0.0%</td></tr><tr><td>S2_train</td><td>0.0%</td><td>3.36%</td><td>0.0%</td></tr><tr><td>S3_train</td><td>0.0%</td><td>3.33%</td><td>0.0%</td></tr><tr><td>S1_test</td><td>0.0%</td><td>0.0%</td><td>0.0%</td></tr><tr><td>S2_test</td><td>0.0%</td><td>2.65%</td><td>0.0%</td></tr><tr><td>S3_test</td><td>0.0%</td><td>2.68%</td><td>0.0%</td></tr>
+</table>
+<div class="conclusion"><p>
+  The missing value heatmap reveals the relative data completeness across all sources. Fields with high missing rates require careful handling — they cannot be used as hard-required blocking keys. Country-level missing values are particularly important because unseen labels (e.g., France) must be treated as a valid open-set label, not filtered.
+</p></div>
+
+<h2>3. Business Name Analysis</h2>
+<img src="plots/name_length.png" alt="Name Length Distribution">
+
+<table>
+  <tr><th>Metric</th><th>S1 Train</th><th>S2 Train</th><th>S3 Train</th><th>S1 Test</th></tr>
+  <tr><td>Record count</td><td>2,206,821</td><td>5,034,614</td><td>5,285,590</td><td>1,732,544</td></tr>
+  <tr><td>Unique names</td><td>1,539,229</td><td>4,402,008</td><td>4,651,608</td><td>1,238,867</td></tr>
+  <tr><td>Duplicate name %</td><td>30.25%</td><td>12.57%</td><td>11.99%</td><td>28.49%</td></tr>
+  <tr><td>Average length</td><td>24.03</td><td>25.1</td><td>25.2</td><td>23.84</td></tr>
+  <tr><td>Median length</td><td>24.0</td><td>25.0</td><td>25.0</td><td>24.0</td></tr>
+  <tr><td>Min length</td><td>3</td><td>2</td><td>2</td><td>3</td></tr>
+  <tr><td>Max length</td><td>105</td><td>104</td><td>123</td><td>92</td></tr>
+</table>
+
+<h3>Legal Suffix Noise Patterns (across all train sources)</h3>
+<table>
+  <tr><th>Pattern</th><th>Records Containing Pattern</th></tr>
+  <tr><td>Corp / Corporation</td><td>451,183</td></tr>
+  <tr><td>Pvt / Private</td><td>2,131,313</td></tr>
+  <tr><td>Ltd / Limited</td><td>2,699,409</td></tr>
+  <tr><td>Inc / Incorporated</td><td>1,106,422</td></tr>
+  <tr><td>LLC</td><td>1,455,401</td></tr>
+  <tr><td>Ampersand (&amp;)</td><td>537,910</td></tr>
+</table>
+<div class="conclusion"><p>
+  Legal suffix variants (Corp/Corporation, Pvt/Private, Ltd/Limited) are confirmed to appear in the dataset. These must be normalized — a token-level canonical form (e.g., mapping "Corporation" → "Corp") is required before computing name similarity features. The presence of "&" alongside "and" also requires disambiguation during preprocessing.
+</p></div>
+
+<h2>4. Business Address Analysis</h2>
+<img src="plots/address_length.png" alt="Address Length Distribution">
+
+<table>
+  <tr><th>Metric</th><th>S1 Train</th><th>S2 Train</th><th>S3 Train</th><th>S1 Test</th></tr>
+  <tr><td>Average length</td><td>52.07</td><td>47.83</td><td>48.32</td><td>57.21</td></tr>
+  <tr><td>Median length</td><td>41.0</td><td>37.0</td><td>42.0</td><td>50.0</td></tr>
+  <tr><td>Has numeric token %</td><td>96.51%</td><td>93.79%</td><td>93.93%</td><td>95.85%</td></tr>
+  <tr><td>Has postal code %</td><td>6.67%</td><td>7.59%</td><td>7.55%</td><td>4.37%</td></tr>
+  <tr><td>Min length</td><td>11</td><td>8</td><td>2</td><td>11</td></tr>
+  <tr><td>Max length</td><td>256</td><td>249</td><td>240</td><td>268</td></tr>
+</table>
+
+<h3>Road/Street Abbreviation Pattern Counts (all train sources)</h3>
+<table>
+  <tr><th>Pattern</th><th>Count</th></tr>
+  <tr><td>"Rd" (abbreviation)</td><td>676,918</td></tr>
+  <tr><td>"Road" (full form)</td><td>1,750,197</td></tr>
+  <tr><td>"St" (abbreviation)</td><td>681,083</td></tr>
+  <tr><td>"Street" (full form)</td><td>1,003,784</td></tr>
+</table>
+<div class="conclusion"><p>
+  Address fields contain significant abbreviation noise ("Rd" vs "Road", "St" vs "Street"). Postal code presence varies substantially across sources, making it a weak mandatory blocking key but a strong confirming feature. Address fields should be tokenized and soft-matched using token Jaccard or TF-IDF cosine similarity rather than exact matching.
+</p></div>
+
+<h2>5. Country Distribution</h2>
+<img src="plots/country_distribution.png" alt="Country Distribution">
+
+<table>
+  <tr><th>Source</th><th>France</th><th>India</th><th>US</th>
+  </tr>
+  <tr><td>S1_train</td><td>0</td><td>883,188</td><td>1,323,633</td></tr><tr><td>S2_train</td><td>0</td><td>2,017,799</td><td>3,016,817</td></tr><tr><td>S3_train</td><td>0</td><td>2,115,547</td><td>3,170,056</td></tr><tr><td>S1_test</td><td>259,452</td><td>809,986</td><td>663,106</td></tr><tr><td>S2_test</td><td>703,378</td><td>2,312,565</td><td>1,871,330</td></tr><tr><td>S3_test</td><td>731,615</td><td>2,405,000</td><td>1,945,701</td></tr>
+</table>
+
+<div class="conclusion">
+<p><strong>Key Finding:</strong> Training data contains the countries: <span class="highlight">India, US</span>.<br>
+Test data contains: <span class="highlight">France, India, US</span>.<br>
+France <span class="badge badge-warn">⚠ PRESENT in Test</span>.<br>
+<br>
+<strong>Implication:</strong> Country must be treated as an open-set string label. Do NOT one-hot encode or hard-code a fixed set of {US, India} — France (and potentially other unseen countries) must flow through the pipeline without errors. Use country as a string-equality feature only, never as a categorical encoder with a fixed vocabulary.
+</p></div>
+
+<h2>6. Ground Truth — Match Distribution</h2>
+<div class="grid">
+  <div class="card">
+    <h3>Match Count Distribution</h3>
+    <div class="stat"><span class="label">Zero matches (singletons)</span><span class="value highlight">123,247</span></div>
+    <div class="stat"><span class="label">Exactly one match</span><span class="value">119,157</span></div>
+    <div class="stat"><span class="label">Multiple matches (≥2)</span><span class="value">1,964,417</span></div>
+    <div class="stat"><span class="label">Average match count</span><span class="value">3.461</span></div>
+    <div class="stat"><span class="label">Maximum match count</span><span class="value">11</span></div>
+  </div>
+  <div class="card">
+    <h3>Source Category (matched entities)</h3>
+    <div class="stat"><span class="label">both</span><span class="value">1,776,047</span></div><div class="stat"><span class="label">S3_only</span><span class="value">164,498</span></div><div class="stat"><span class="label">S2_only</span><span class="value">143,029</span></div>
+  </div>
+</div>
+<div class="conclusion"><p>
+  Singletons (zero-match S1 entities) earn a full F_0.5 = 1.0 when correctly predicted as empty. They must not be ignored — the model must confidently produce an empty matched_entity_ids for these records. False merges on singletons are penalised heavily by the precision-weighted F_0.5 metric.
+</p></div>
+
+<h2>7. Key Conclusions for Normalization & Blocking Design</h2>
+<ul>
+  <li><strong>Name normalization required:</strong> Legal suffix abbreviations (Corp/Corporation, Pvt/Private, Ltd/Limited, Inc) confirmed as major noise source. Strip/canonicalize before any comparison.</li>
+  <li><strong>Address soft-matching required:</strong> Both abbreviated ("Rd", "St") and full ("Road", "Street") forms coexist. Postal code presence is inconsistent — cannot be a mandatory blocking key.</li>
+  <li><strong>Country is an open set:</strong> France appears in the test set but not in training. Never encode country as a fixed-vocabulary categorical feature. Use it as a string equality boolean feature.</li>
+  <li><strong>Singletons matter:</strong> A substantial fraction of S1 entities have zero matches. Precision-heavy F_0.5 scoring means false merges are twice as costly as missed links.</li>
+  <li><strong>Multi-source matching:</strong> Many S1 entities match records from both S2 and S3. Blocking must cover both source files simultaneously.</li>
+  <li><strong>Blocking strategy implication:</strong> Given address variability, blocking on name token overlap (inverted index) + phonetic keys offers the best recall ceiling without exploding the candidate set.</li>
+</ul>
+
+<hr style="border-color:var(--border);margin:40px 0">
+<p style="color:var(--muted);font-size:.8rem;text-align:center">
+  Generated by Member 2 EDA Script · Team Akatsuki · Amazon ML Challenge 2026
+</p>
+</body>
+</html>

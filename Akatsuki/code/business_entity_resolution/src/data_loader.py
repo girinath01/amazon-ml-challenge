@@ -25,11 +25,11 @@ def find_default_dataset_dir() -> Path:
     Search common relative and absolute paths to find the student_resource/dataset directory.
     """
     candidates = [
-        Path(r"D:\Akatsuki\student_resource\dataset"),
-        Path(__file__).resolve().parent.parent / "student_resource" / "dataset",
+        Path(__file__).resolve().parents[4] / "student_resource" / "dataset",
+        Path(__file__).resolve().parents[3] / "student_resource" / "dataset",
         Path.cwd() / "student_resource" / "dataset",
-        Path.cwd() / "dataset",
-        Path(__file__).resolve().parent / "dataset",
+        Path.cwd().parent / "student_resource" / "dataset",
+        Path(r"D:\Akatsuki\student_resource\dataset"),
     ]
     for p in candidates:
         if p.exists() and (p / "train").exists():

@@ -11,6 +11,10 @@ ENV/
 # Data & Student Resources
 student_resource/
 
+# Large generated data outputs
+*.parquet
+Akatsuki/member2/output/*.tsv
+
 # System files
 .DS_Store
 Thumbs.db

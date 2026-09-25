@@ -1,0 +1,2 @@
+split,overall_recall_pct,total_gt_pairs,found_gt_pairs,total_s1_records,total_candidate_pairs,mean_candidates_per_s1,median_candidates_per_s1,p95_candidates_per_s1,p99_candidates_per_s1,max_candidates_per_s1,zero_candidate_s1_count
+train,0.0,3444,0,1000.0,15806.0,15.806,11.0,48.0,64.00999999999999,85.0,44.0

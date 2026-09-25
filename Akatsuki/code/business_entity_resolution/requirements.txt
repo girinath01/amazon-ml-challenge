@@ -1,0 +1,4 @@
+# Pinned dependencies / environment
+pandas
+numpy
+scikit-learn

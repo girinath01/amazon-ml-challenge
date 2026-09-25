@@ -1,0 +1,128 @@
+{
+  "version": "v2",
+  "timestamp": "2026-09-25T13:32:23",
+  "num_train_pairs": 43125,
+  "num_s1_entities": 5000,
+  "num_features": 40,
+  "feature_names": [
+    "name_exact",
+    "name_jaccard",
+    "name_levenshtein",
+    "name_jaro_winkler",
+    "name_token_sort",
+    "name_token_set",
+    "name_char3_cosine",
+    "name_char4_cosine",
+    "name_core_similarity",
+    "name_translit_similarity",
+    "address_jaccard",
+    "address_levenshtein",
+    "address_char3_cosine",
+    "address_digit_overlap",
+    "house_number_match",
+    "postal_code_match",
+    "address_exact",
+    "address_missing",
+    "country_match",
+    "name_length_ratio",
+    "address_length_ratio",
+    "name_token_count_difference",
+    "address_token_count_difference",
+    "numeric_conflict",
+    "name_address_similarity_product",
+    "name_high_address_low",
+    "name_high_address_high",
+    "name_address_conflict",
+    "name_soundex_match",
+    "name_monge_elkan",
+    "name_prefix_stripped_sim",
+    "name_abbrev_expanded_sim",
+    "address_all_digits_overlap",
+    "address_pin_prefix_match",
+    "address_street_type_match",
+    "name_token_diff_norm",
+    "address_token_diff_norm",
+    "both_have_address",
+    "score_confidence",
+    "numeric_conflict_flipped"
+  ],
+  "neg_to_pos_ratio": 1.5,
+  "cv_folds": 5,
+  "cv_f05_scores": [
+    0.99635,
+    0.99738,
+    0.99505,
+    0.99791,
+    0.99762
+  ],
+  "cv_mean_f05": 0.99686,
+  "cv_std_f05": 0.00105,
+  "oof_f05": 0.99651,
+  "optimal_threshold": 0.67,
+  "s2_threshold": 0.65,
+  "s3_threshold": 0.5,
+  "calibration": "isotonic",
+  "avg_best_iteration": 177,
+  "final_rounds": 194,
+  "best_lgbm_params": {
+    "objective": "binary",
+    "metric": "binary_logloss",
+    "boosting_type": "gbdt",
+    "num_leaves": 127,
+    "learning_rate": 0.04,
+    "feature_fraction": 0.75,
+    "bagging_fraction": 0.8,
+    "bagging_freq": 5,
+    "min_child_samples": 30,
+    "min_split_gain": 0.001,
+    "reg_alpha": 0.05,
+    "reg_lambda": 1.5,
+    "path_smooth": 0.5,
+    "scale_pos_weight": 1.5,
+    "n_jobs": -1,
+    "seed": 42,
+    "verbose": -1
+  },
+  "top10_features": [
+    {
+      "feature": "address_jaccard",
+      "gain": 508336.37650951836
+    },
+    {
+      "feature": "address_char3_cosine",
+      "gain": 107959.89260442636
+    },
+    {
+      "feature": "name_core_similarity",
+      "gain": 24661.991769512184
+    },
+    {
+      "feature": "name_char3_cosine",
+      "gain": 13717.234455084894
+    },
+    {
+      "feature": "score_confidence",
+      "gain": 12581.207504200516
+    },
+    {
+      "feature": "address_length_ratio",
+      "gain": 11120.465825777268
+    },
+    {
+      "feature": "numeric_conflict",
+      "gain": 9632.088308953214
+    },
+    {
+      "feature": "name_prefix_stripped_sim",
+      "gain": 7186.352393343113
+    },
+    {
+      "feature": "address_digit_overlap",
+      "gain": 6116.385675683618
+    },
+    {
+      "feature": "name_translit_similarity",
+      "gain": 4463.875842272537
+    }
+  ]
+}

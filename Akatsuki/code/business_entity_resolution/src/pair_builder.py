@@ -15,6 +15,7 @@ Supports:
 import os
 import sys
 import random
+import re
 from pathlib import Path
 from typing import Any, Dict, List, Set, Tuple, Optional, Iterator
 import pandas as pd
@@ -26,6 +27,18 @@ if str(src_dir) not in sys.path:
     sys.path.insert(0, str(src_dir))
 
 from features.pair_features import compute_pair_features, FEATURE_NAMES
+
+
+def _first_name_token(name: str) -> str:
+    toks = (name or "").lower().split()
+    return toks[0] if toks else ""
+
+
+def _extract_house_number(address: str) -> str:
+    if not address:
+        return ""
+    m = re.search(r"\b\d{1,8}\b", address)
+    return m.group(0) if m else ""
 
 
 class PairBuilder:
@@ -169,31 +182,47 @@ class PairBuilder:
         s2_records.update(extra_s2)
         s3_records.update(extra_s3)
 
-        # Build in-country pools for generating realistic negative candidates
-        country_s2 = {"US": [], "India": []}
-        country_s3 = {"US": [], "India": []}
+        # Build open-set country pools for generating realistic negative candidates
+        country_s2 = {}
+        country_s3 = {}
         for e_id, rec in s2_records.items():
             c = rec.get("country", "")
-            if c in country_s2:
-                country_s2[c].append(e_id)
+            country_s2.setdefault(c, []).append(e_id)
         for e_id, rec in s3_records.items():
             c = rec.get("country", "")
-            if c in country_s3:
-                country_s3[c].append(e_id)
+            country_s3.setdefault(c, []).append(e_id)
 
-        # Inverted index on first name token for hard-negative generation (same name, different business)
+        # Inverted indexes for hard-negative generation:
+        #   1) first name token collisions
+        #   2) same country + same house number collisions
         name_token_s2_index = {}
+        addr_num_index = {}
         for e_id, rec in s2_records.items():
-            tokens = rec["name"].lower().split()
-            if tokens:
-                first_tok = tokens[0]
-                if len(first_tok) >= 4:
-                    name_token_s2_index.setdefault(first_tok, []).append(e_id)
+            first_tok = _first_name_token(rec.get("name", ""))
+            if len(first_tok) >= 4:
+                name_token_s2_index.setdefault(first_tok, []).append(e_id)
+            country = rec.get("country", "")
+            house_num = _extract_house_number(rec.get("address", ""))
+            if country and house_num:
+                addr_num_index.setdefault((country, house_num), []).append(e_id)
+        for e_id, rec in s3_records.items():
+            first_tok = _first_name_token(rec.get("name", ""))
+            if len(first_tok) >= 4:
+                name_token_s2_index.setdefault(first_tok, []).append(e_id)
+            country = rec.get("country", "")
+            house_num = _extract_house_number(rec.get("address", ""))
+            if country and house_num:
+                addr_num_index.setdefault((country, house_num), []).append(e_id)
 
         print("Constructing negative candidate pairs...")
         negative_pairs = []
         target_negatives = int(len(positive_pairs) * neg_to_pos_ratio)
         seen_pairs = set((s1, cand) for s1, cand, _ in positive_pairs)
+        neg_type_counts = {
+            "address_number_collision": 0,
+            "name_token_collision": 0,
+            "country_random": 0,
+        }
 
         for s1_id in sample_s1_ids:
             if len(negative_pairs) >= target_negatives:
@@ -204,22 +233,61 @@ class PairBuilder:
             country = s1_rec.get("country", "US")
             true_matches = gt_dict.get(s1_id, set())
 
-            # 1. Hard negative: shared first name token
-            tokens = s1_rec["name"].lower().split()
-            if tokens and tokens[0] in name_token_s2_index:
-                for cand_id in name_token_s2_index[tokens[0]]:
+            # 1) Hard negative: same country + same house number (address collision)
+            house_num = _extract_house_number(s1_rec.get("address", ""))
+            if country and house_num:
+                key = (country, house_num)
+                for cand_id in random.sample(addr_num_index.get(key, []), min(5, len(addr_num_index.get(key, [])))):
                     if cand_id not in true_matches and (s1_id, cand_id) not in seen_pairs:
                         seen_pairs.add((s1_id, cand_id))
                         negative_pairs.append((s1_id, cand_id, 0))
+                        neg_type_counts["address_number_collision"] += 1
                         break
 
-            # 2. In-country random candidate (simulating blocking pass)
+            # 2) Hard negative: shared first name token
+            first_tok = _first_name_token(s1_rec.get("name", ""))
+            if first_tok in name_token_s2_index:
+                for cand_id in random.sample(name_token_s2_index[first_tok], min(5, len(name_token_s2_index[first_tok]))):
+                    if cand_id not in true_matches and (s1_id, cand_id) not in seen_pairs:
+                        seen_pairs.add((s1_id, cand_id))
+                        negative_pairs.append((s1_id, cand_id, 0))
+                        neg_type_counts["name_token_collision"] += 1
+                        break
+
+            # 3) In-country random candidate (simulating blocking pass)
             pool = country_s2.get(country, []) + country_s3.get(country, [])
             if pool:
                 cand_id = random.choice(pool)
                 if cand_id not in true_matches and (s1_id, cand_id) not in seen_pairs:
                     seen_pairs.add((s1_id, cand_id))
                     negative_pairs.append((s1_id, cand_id, 0))
+                    neg_type_counts["country_random"] += 1
+
+        # Top-up pass in case target ratio is not met in first sweep
+        if len(negative_pairs) < target_negatives and sample_s1_ids:
+            while len(negative_pairs) < target_negatives:
+                s1_id = random.choice(sample_s1_ids)
+                s1_rec = s1_records.get(s1_id)
+                if not s1_rec:
+                    continue
+                country = s1_rec.get("country", "US")
+                true_matches = gt_dict.get(s1_id, set())
+                pool = country_s2.get(country, []) + country_s3.get(country, [])
+                if not pool:
+                    continue
+                cand_id = random.choice(pool)
+                if cand_id in true_matches or (s1_id, cand_id) in seen_pairs:
+                    continue
+                seen_pairs.add((s1_id, cand_id))
+                negative_pairs.append((s1_id, cand_id, 0))
+                neg_type_counts["country_random"] += 1
+
+        print(
+            "Negative mix: "
+            f"address+number={neg_type_counts['address_number_collision']:,}, "
+            f"name-token={neg_type_counts['name_token_collision']:,}, "
+            f"random-country={neg_type_counts['country_random']:,}"
+        )
 
         all_pairs = positive_pairs + negative_pairs
         random.shuffle(all_pairs)

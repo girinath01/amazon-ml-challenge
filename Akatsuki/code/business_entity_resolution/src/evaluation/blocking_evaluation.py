@@ -104,6 +104,42 @@ def compute_candidate_volume_stats(
     }
 
 
+def compute_blocking_audit_summary(
+    df_candidates_long: pd.DataFrame,
+    df_s1: pd.DataFrame,
+    df_s2: pd.DataFrame,
+    df_s3: pd.DataFrame,
+    found_gt_pairs: int,
+    total_gt_pairs: int,
+) -> Dict[str, float]:
+    """
+    Computes end-to-end blocking audit metrics:
+      - candidate recall
+      - naive pair count (S1 x (S2+S3))
+      - candidate reduction vs naive all-pairs
+    """
+    s1_count = int(len(df_s1))
+    s2_count = int(len(df_s2))
+    s3_count = int(len(df_s3))
+    naive_pairs = int(s1_count * (s2_count + s3_count))
+    candidate_pairs = int(len(df_candidates_long))
+
+    candidate_recall = float(found_gt_pairs / total_gt_pairs) if total_gt_pairs > 0 else 0.0
+    candidate_retained_pct = float((candidate_pairs / naive_pairs) * 100.0) if naive_pairs > 0 else 0.0
+    candidate_reduction_pct = float(100.0 - candidate_retained_pct) if naive_pairs > 0 else 0.0
+
+    return {
+        "s1_count": float(s1_count),
+        "s2_count": float(s2_count),
+        "s3_count": float(s3_count),
+        "naive_pair_count": float(naive_pairs),
+        "candidate_pair_count": float(candidate_pairs),
+        "candidate_recall": round(candidate_recall, 6),
+        "candidate_retained_pct": round(candidate_retained_pct, 6),
+        "candidate_reduction_pct": round(candidate_reduction_pct, 6),
+    }
+
+
 def generate_ablation_report(
     pass_results: Dict[str, Dict[str, Set[str]]],
     gt_dict: Dict[str, Set[str]],

@@ -1,0 +1,22 @@
+original_country,normalized_country,count,is_canonical,is_alias,is_unknown_or_ambiguous
+US,US,217774,True,False,False
+India,India,167243,True,False,False
+France,France,14983,True,False,False
+USA,US,1,True,True,False
+United States,US,1,True,True,False
+U.S.A.,US,1,True,True,False
+india,India,1,True,True,False
+INDIA,India,1,True,True,False
+Republic of India,India,1,True,True,False
+france,France,1,True,True,False
+France.,France,1,True,True,False
+FR,France,1,True,True,False
+Germany,Germany,1,False,True,False
+DEU,Germany,1,False,True,False
+Japan,Japan,1,False,True,False
+jpn,Japan,1,False,True,False
+new zealand,New Zealand,1,False,True,False
+unknown,,1,False,False,True
+???,,1,False,False,False
+None,,1,False,False,True
+,,1,False,False,False

@@ -1,4 +1,6 @@
 # Pinned dependencies / environment
-pandas
-numpy
-scikit-learn
+pandas>=2.2.0
+numpy>=1.26.0
+scikit-learn>=1.4.0
+anyascii>=0.3.3
+pycountry>=26.2.16

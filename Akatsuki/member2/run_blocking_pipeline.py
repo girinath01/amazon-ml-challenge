@@ -28,6 +28,7 @@ from blocking.candidate_generator import run_candidate_generation_pipeline
 from evaluation.blocking_evaluation import (
     evaluate_blocking_recall,
     compute_candidate_volume_stats,
+    compute_blocking_audit_summary,
     generate_ablation_report,
     analyze_blocking_failures,
 )
@@ -91,12 +92,25 @@ def main():
 
         recall, total_gt, found_gt, pass_recalls = evaluate_blocking_recall(df_long, gt_dict)
         vol_stats = compute_candidate_volume_stats(df_long, df_s1["entity_id"].tolist())
+        audit_stats = compute_blocking_audit_summary(
+            df_candidates_long=df_long,
+            df_s1=df_s1,
+            df_s2=df_s2,
+            df_s3=df_s3,
+            found_gt_pairs=found_gt,
+            total_gt_pairs=total_gt,
+        )
 
         logger.info("=" * 60)
         logger.info(f"BLOCKING EVALUATION RESULTS:")
         logger.info(f"  Total Ground Truth Pairs: {total_gt:,}")
         logger.info(f"  Found Matching Pairs:     {found_gt:,}")
         logger.info(f"  OVERALL BLOCKING RECALL:  {recall:.3f}%")
+        logger.info(f"  Candidate Recall:         {audit_stats['candidate_recall']:.6f}")
+        logger.info(f"  Naive Pair Space:         {int(audit_stats['naive_pair_count']):,}")
+        logger.info(f"  Candidate Pairs:          {int(audit_stats['candidate_pair_count']):,}")
+        logger.info(f"  Pair Space Retained:      {audit_stats['candidate_retained_pct']:.6f}%")
+        logger.info(f"  Pair Space Reduced:       {audit_stats['candidate_reduction_pct']:.6f}%")
         logger.info(f"  Candidate Stats (per S1): Mean={vol_stats['mean_candidates_per_s1']:.2f}, "
                     f"Median={vol_stats['median_candidates_per_s1']:.1f}, "
                     f"P95={vol_stats['p95_candidates_per_s1']:.1f}, "
@@ -110,9 +124,12 @@ def main():
             "overall_recall_pct": round(recall, 3),
             "total_gt_pairs": total_gt,
             "found_gt_pairs": found_gt,
-            **vol_stats
+            **vol_stats,
+            **audit_stats
         }])
         metrics_df.to_csv(reports_dir / "blocking_metrics.csv", index=False)
+
+        pd.DataFrame([audit_stats]).to_csv(reports_dir / "blocking_audit_summary.csv", index=False)
 
         # Size distribution report
         dist_df = pd.DataFrame(list(vol_stats.items()), columns=["metric", "value"])

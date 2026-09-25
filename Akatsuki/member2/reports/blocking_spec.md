@@ -16,7 +16,19 @@ $$\boxed{\text{very high true-match recall} + \text{manageable candidate volume}
 
 ---
 
-## 3. 8-Layer Multi-Pass Architecture
+## 3. Validation Performance Metrics
+- **Overall Ground Truth Recall**: **0.43%**
+- **S2 Ground Truth Recall**: **0.43%**
+- **S3 Ground Truth Recall**: **0.44%**
+- **US Ground Truth Recall**: **0.40%**
+- **India Ground Truth Recall**: **0.00%**
+- **Average Candidates per S1**: **97.66**
+- **P95 Candidates per S1**: **108.0**
+- **Max Candidates per S1**: **200.0**
+
+---
+
+## 4. 8-Layer Multi-Pass Architecture
 
 | Pass Code | Pass Name | Index Keys | Frequency Cap / Constraint |
 |---|---|---|---|
@@ -33,17 +45,3 @@ $$\boxed{\text{very high true-match recall} + \text{manageable candidate volume}
 | **B5** | Hybrid Word+Char TF-IDF | Dual Word (1-2) + Char (3-5) n-gram TF-IDF | Top-30, Cosine threshold >= 0.50 |
 | **B6** | Soundex Phonetic Token | `country \| soundex(token)` | Max 100 doc freq cap |
 | **B7** | Union & Adaptive Prune | Priority ordering & address-adaptive budget | Cap 75 (address) / 200 (name-only) |
-
----
-
-## 4. Internal Provenance Matrix Schema (`candidate_pairs_long.parquet`)
-- `source1_id`: S1 Entity ID
-- `candidate_id`: Matched S2/S3 Candidate ID
-- `block_exact_name`: Boolean
-- `block_core`: Boolean
-- `block_rare_token`: Boolean
-- `block_address`: Boolean
-- `block_numeric`: Boolean
-- `block_translit`: Boolean
-- `block_ann`: Boolean
-- `block_phonetic`: Boolean

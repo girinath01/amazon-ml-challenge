@@ -1,51 +1,101 @@
 source1_id,s1_name,s1_country,missed_target_id,target_name,target_country,failure_reason
-S1-965667,,,S2-743505751,,,Missing Address
-S1-965667,,,S3-11291185,,,Missing Address
-S1-965667,,,S2-681193310,,,Missing Address
-S1-965667,,,S3-860443364,,,Missing Address
-S1-965667,,,S3-775321672,,,Missing Address
-S1-55344266,,,S2-197070651,,,Missing Address
-S1-55344266,,,S2-249013014,,,Missing Address
-S1-55344266,,,S3-384364074,,,Missing Address
-S1-55344266,,,S3-478195123,,,Missing Address
-S1-343815751,,,S2-790675320,,,Missing Address
-S1-343815751,,,S2-479876582,,,Missing Address
-S1-343815751,,,S3-878454467,,,Missing Address
-S1-656753428,,,S2-24659151,,,Missing Address
-S1-656753428,,,S3-679606215,,,Missing Address
-S1-656753428,,,S2-153058913,,,Missing Address
-S1-102811957,,,S2-553508714,,,Missing Address
-S1-102811957,,,S3-728090388,,,Missing Address
-S1-102811957,,,S3-449308785,,,Missing Address
-S1-102811957,,,S3-928796641,,,Missing Address
-S1-102811957,,,S2-478959098,,,Missing Address
-S1-102811957,,,S2-625774905,,,Missing Address
-S1-18727616,,,S2-755677256,,,Missing Address
-S1-18727616,,,S3-187831601,,,Missing Address
-S1-18727616,,,S3-641489370,,,Missing Address
-S1-18727616,,,S3-476250621,,,Missing Address
-S1-318373630,,,S2-660036492,,,Missing Address
-S1-318373630,,,S3-804600254,,,Missing Address
-S1-86989137,,,S3-312496301,,,Missing Address
-S1-86989137,,,S3-274817120,,,Missing Address
-S1-29845983,,,S3-588502663,,,Missing Address
-S1-29845983,,,S2-648035184,,,Missing Address
-S1-789009573,,,S2-383871912,,,Missing Address
-S1-789009573,,,S3-576451439,,,Missing Address
-S1-789009573,,,S3-74481402,,,Missing Address
-S1-730934468,,,S3-352439310,,,Missing Address
-S1-730934468,,,S2-356983532,,,Missing Address
-S1-7293388,,,S2-157073701,,,Missing Address
-S1-7293388,,,S2-7028416,,,Missing Address
-S1-7293388,,,S2-442723188,,,Missing Address
-S1-7293388,,,S3-523120965,,,Missing Address
-S1-546142636,,,S2-582477216,,,Missing Address
-S1-546142636,,,S3-729771680,,,Missing Address
-S1-546142636,,,S2-392804085,,,Missing Address
-S1-546142636,,,S3-249331830,,,Missing Address
-S1-546142636,,,S3-200008747,,,Missing Address
-S1-546142636,,,S2-487600131,,,Missing Address
-S1-274126313,,,S2-680265918,,,Missing Address
-S1-274126313,,,S3-925631694,,,Missing Address
-S1-274126313,,,S3-461175723,,,Missing Address
-S1-274126313,,,S3-850112871,,,Missing Address
+S1-539879230,Novent Owl PLLC,US,S2-83796020,,,Missing Address
+S1-539879230,Novent Owl PLLC,US,S3-127246506,,,Missing Address
+S1-539879230,Novent Owl PLLC,US,S3-945547250,,,Missing Address
+S1-539879230,Novent Owl PLLC,US,S3-117651018,,,Missing Address
+S1-716830359,Spicer Star Environmental Services LLC,US,S2-795817041,,,Missing Address
+S1-716830359,Spicer Star Environmental Services LLC,US,S3-762649005,,,Missing Address
+S1-716830359,Spicer Star Environmental Services LLC,US,S3-737589534,,,Missing Address
+S1-716830359,Spicer Star Environmental Services LLC,US,S2-306163710,,,Missing Address
+S1-844896591,Modern Packaging Global PC,US,S2-362218588,,,Missing Address
+S1-844896591,Modern Packaging Global PC,US,S3-11966366,,,Missing Address
+S1-832050262,Shakti Agro Limited,India,S2-856926544,,,Missing Address
+S1-832050262,Shakti Agro Limited,India,S3-673592452,,,Missing Address
+S1-201953835,Anderson and Baker Adamas,US,S3-557707615,,,Missing Address
+S1-201953835,Anderson and Baker Adamas,US,S2-807723118,,,Missing Address
+S1-201953835,Anderson and Baker Adamas,US,S2-884418256,,,Missing Address
+S1-613517393,Haven Exim,India,S3-945806165,,,Missing Address
+S1-613517393,Haven Exim,India,S2-593664813,,,Missing Address
+S1-613517393,Haven Exim,India,S2-664447396,,,Missing Address
+S1-613517393,Haven Exim,India,S3-655306599,,,Missing Address
+S1-613517393,Haven Exim,India,S2-649519831,,,Missing Address
+S1-975588880,XBL Kpet,US,S2-695716096,,,Missing Address
+S1-975588880,XBL Kpet,US,S3-871697729,,,Missing Address
+S1-975588880,XBL Kpet,US,S3-477353991,,,Missing Address
+S1-975588880,XBL Kpet,US,S3-639477433,,,Missing Address
+S1-447656699,Lotus Media Private Limited,India,S3-217931395,,,Missing Address
+S1-447656699,Lotus Media Private Limited,India,S2-348156373,,,Missing Address
+S1-890009542,SJ Ace Vendome Inc,US,S2-84178757,,,Missing Address
+S1-890009542,SJ Ace Vendome Inc,US,S2-932187797,,,Missing Address
+S1-890009542,SJ Ace Vendome Inc,US,S2-461344955,,,Missing Address
+S1-890009542,SJ Ace Vendome Inc,US,S3-203500929,,,Missing Address
+S1-928584878,International Projects (India) Limited,India,S2-185735427,,,Missing Address
+S1-928584878,International Projects (India) Limited,India,S3-212514545,,,Missing Address
+S1-928584878,International Projects (India) Limited,India,S3-20727238,,,Missing Address
+S1-928584878,International Projects (India) Limited,India,S3-935370916,,,Missing Address
+S1-928584878,International Projects (India) Limited,India,S3-839020948,,,Missing Address
+S1-928584878,International Projects (India) Limited,India,S3-696813732,,,Missing Address
+S1-680008372,Solar Solutions Private Limited,India,S3-306689701,,,Missing Address
+S1-680008372,Solar Solutions Private Limited,India,S2-474048096,,,Missing Address
+S1-680008372,Solar Solutions Private Limited,India,S3-319382210,,,Missing Address
+S1-966027321,Probst & Duran Newhold LLC,US,S2-4379937,,,Missing Address
+S1-966027321,Probst & Duran Newhold LLC,US,S3-363342458,,,Missing Address
+S1-966027321,Probst & Duran Newhold LLC,US,S3-843993154,,,Missing Address
+S1-966027321,Probst & Duran Newhold LLC,US,S3-472664232,,,Missing Address
+S1-966027321,Probst & Duran Newhold LLC,US,S2-180000980,,,Missing Address
+S1-159303490,Finance Sasa Farmer Private Limited,India,S2-253862632,,,Missing Address
+S1-159303490,Finance Sasa Farmer Private Limited,India,S3-110193122,,,Missing Address
+S1-57235044,Bhagat Consultants,India,S2-353671245,,,Missing Address
+S1-57235044,Bhagat Consultants,India,S2-378241139,,,Missing Address
+S1-57235044,Bhagat Consultants,India,S3-2021399,,,Missing Address
+S1-88817160,Natka Beagle Pinnacle Hologram,US,S3-487916872,,,Missing Address
+S1-88817160,Natka Beagle Pinnacle Hologram,US,S3-566739305,,,Missing Address
+S1-332396561,Rama Labour Private Limited,India,S2-284605268,,,Missing Address
+S1-378978603,"QH Vendome, L.L.C.",US,S2-319300693,,,Missing Address
+S1-378978603,"QH Vendome, L.L.C.",US,S3-948532405,,,Missing Address
+S1-378978603,"QH Vendome, L.L.C.",US,S3-921016187,,,Missing Address
+S1-919733927,"Confer's Produce, Inc.",US,S3-836612652,,,Missing Address
+S1-919733927,"Confer's Produce, Inc.",US,S2-625311119,,,Missing Address
+S1-919733927,"Confer's Produce, Inc.",US,S3-923466299,,,Missing Address
+S1-355685907,"Regional Scientific, LLC",US,S2-979678502,,,Missing Address
+S1-355685907,"Regional Scientific, LLC",US,S3-998473387,,,Missing Address
+S1-355685907,"Regional Scientific, LLC",US,S2-350098288,,,Missing Address
+S1-355685907,"Regional Scientific, LLC",US,S3-383014372,,,Missing Address
+S1-355685907,"Regional Scientific, LLC",US,S3-560301687,,,Missing Address
+S1-355685907,"Regional Scientific, LLC",US,S2-898349222,,,Missing Address
+S1-355685907,"Regional Scientific, LLC",US,S3-97296127,,,Missing Address
+S1-360488265,Jai Systems Private Limited,India,S3-978889721,,,Missing Address
+S1-360488265,Jai Systems Private Limited,India,S3-144210612,,,Missing Address
+S1-360488265,Jai Systems Private Limited,India,S3-215800411,,,Missing Address
+S1-360488265,Jai Systems Private Limited,India,S3-228786449,,,Missing Address
+S1-360488265,Jai Systems Private Limited,India,S3-816474452,,,Missing Address
+S1-360488265,Jai Systems Private Limited,India,S2-814373207,,,Missing Address
+S1-354301488,Dynamic Unified Strategy Inc,US,S3-700423099,,,Missing Address
+S1-354301488,Dynamic Unified Strategy Inc,US,S3-665673072,,,Missing Address
+S1-354301488,Dynamic Unified Strategy Inc,US,S3-770148879,,,Missing Address
+S1-354301488,Dynamic Unified Strategy Inc,US,S2-635282128,,,Missing Address
+S1-726860670,"Oneil National Sprott, Inc",US,S2-8703194,,,Missing Address
+S1-726860670,"Oneil National Sprott, Inc",US,S3-165705146,,,Missing Address
+S1-674323954,Patriot First Publishing Inc,US,S2-785756386,,,Missing Address
+S1-674323954,Patriot First Publishing Inc,US,S3-325288398,,,Missing Address
+S1-674323954,Patriot First Publishing Inc,US,S3-339831856,,,Missing Address
+S1-674323954,Patriot First Publishing Inc,US,S3-662911269,,,Missing Address
+S1-78789684,North Spartacus,US,S3-30685240,,,Missing Address
+S1-78789684,North Spartacus,US,S2-704899,,,Missing Address
+S1-78789684,North Spartacus,US,S3-116384999,,,Missing Address
+S1-927509773,Dental Medicine of Shawnee PC,US,S2-377299995,,,Missing Address
+S1-927509773,Dental Medicine of Shawnee PC,US,S2-576929411,,,Missing Address
+S1-927509773,Dental Medicine of Shawnee PC,US,S3-292331096,,,Missing Address
+S1-927509773,Dental Medicine of Shawnee PC,US,S3-664183492,,,Missing Address
+S1-447452795,Blue Network Corporation,US,S2-995233298,,,Missing Address
+S1-447452795,Blue Network Corporation,US,S3-366674728,,,Missing Address
+S1-664355108,Eye Partners Inc,US,S2-797243298,,,Missing Address
+S1-664355108,Eye Partners Inc,US,S3-83870341,,,Missing Address
+S1-664355108,Eye Partners Inc,US,S2-385686651,,,Missing Address
+S1-891013868,Family Trusted Health,US,S2-570671307,,,Missing Address
+S1-891013868,Family Trusted Health,US,S3-988836961,,,Missing Address
+S1-891013868,Family Trusted Health,US,S3-349956925,,,Missing Address
+S1-891013868,Family Trusted Health,US,S3-115569453,,,Missing Address
+S1-891013868,Family Trusted Health,US,S2-961368561,,,Missing Address
+S1-231859208,Office of Housing,US,S2-584532464,,,Missing Address
+S1-231859208,Office of Housing,US,S3-418972455,,,Missing Address

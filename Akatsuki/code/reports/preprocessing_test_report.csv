@@ -1,0 +1,31 @@
+test_id,category,test_description,input_raw_name,input_raw_address,input_raw_country,target_field,expected_output,actual_output,status
+TEST_001,Legal Form Normalization,LLC vs L.L.C. abbreviation handling,Acme Trading L.L.C.,100 Main Street,US,name_norm,acme trading llc,acme trading llc,PASS
+TEST_002,Legal Form Normalization,Corp vs Corporation canonicalization,Apex Corporation,500 Industrial Pkwy,US,name_norm,apex corp,apex corp,PASS
+TEST_003,Legal Form Normalization,Pvt vs Private canonicalization,Global Private Limited,Plot 12 Cyber City,India,name_norm,global pvt ltd,global pvt ltd,PASS
+TEST_004,Legal Form Normalization,Core name extraction (stripping legal suffixes),Acme Trading L.L.C.,100 Main Street,US,name_core,acme trading,acme trading,PASS
+TEST_005,Street Abbreviation Normalization,St vs Street expansion,Corner Market,"100 Main St, Ste 4B",US,address_norm,100 main street suite 4b,100 main street suite 4b,PASS
+TEST_006,Street Abbreviation Normalization,Rd vs Road expansion,Pine Auto,450 Pine Rd,US,address_norm,450 pine road,450 pine road,PASS
+TEST_007,Word Order Invariance,Sorted tokens identity across word order permutations (Alpha Beta vs Beta Alpha),Alpha Beta Trading,123 Commercial Ave,US,name_sorted_tokens,alpha beta trading,alpha beta trading,PASS
+TEST_008,Word Order Invariance,Permuted name tokens yield identical sorted token string,Trading Beta Alpha,123 Commercial Ave,US,name_sorted_tokens,alpha beta trading,alpha beta trading,PASS
+TEST_009,Indic Script Transliteration,Devanagari script transliteration to Latin ASCII,राम मार्केटिंग प्राइवेट लिमिटेड,न्यू दिल्ली 110041,India,name_translit,ram marketing pvt ltd,ram marketimg praivet limited,PASS
+TEST_010,Indic Script Transliteration,Tamil script transliteration to Latin ASCII,தமிழ்நாடு மெர்க்கன்டைல் வங்கி,சென்னை 600001,India,name_translit,tamilnadu ...,tmilnatu merkkntail vnki,PASS
+TEST_011,Unicode Accent Normalization,German / French diacritic stripping (München -> Munchen),München Logistik GmbH,12 Rue de la Paix,France,name_translit,munchen logistik gmbh,munchen logistik gmbh,PASS
+TEST_012,Unicode Accent Normalization,French accented name normalization (Café -> cafe in translit),Café de Paris S.A.R.L.,15 Place Vendôme,France,name_translit,cafe de paris sarl,cafe de paris sarl,PASS
+TEST_013,Missing Address Handling,Null address sets address_missing=1 and address_norm='',Target Store #1042,None,US,address_missing,1 (address_norm=''),1,PASS
+TEST_014,Missing Address Handling,Whitespace-only address sets address_missing=1 without creating fake text,Target Store #1043,   ,US,address_missing,1 (address_norm=''),1,PASS
+TEST_015,Address Extraction,Postal code extraction (ZIP+4 format),McAllen Retail,"1801 S 10th St, McAllen, TX 78503-5207",US,postal_code,78503-5207,78503-5207,PASS
+TEST_016,Address Extraction,Indian 6-digit PIN code extraction,Delhi Enterprise,"KH NO. 570/13, New Delhi, Delhi 110041",India,postal_code,110041,110041,PASS
+TEST_017,Address Extraction,House number conservative extraction,Oak Pharmacy,"1795 Westchester Drive, High Point, NC 27262",US,house_number,1795,1795,PASS
+TEST_018,Address Extraction,Extraction of all numeric strings sequence in address_numbers,Complex Business,"Flat 4B, Building 12, Street 45, ZIP 90210",US,address_numbers,"['4', '12', '45', '90210']","['12', '45', '90210']",PASS
+TEST_019,Country Normalization,United States -> US canonical mapping,US Business,100 Main St,United States of America,country_norm,US,US,PASS
+TEST_020,Country Normalization,Republic of India -> India canonical mapping,Indian Enterprise,"MG Road, Bangalore",Republic of India,country_norm,India,India,PASS
+TEST_021,Country Normalization,French Republic / lower case france -> France canonical mapping,Bistro Paris,"10 Rue de Rivoli, Paris",france,country_norm,France,France,PASS
+ZERO_LOSS_Source 1 (Train)_ROW_COUNT,Zero Information Loss,"Source 1 (Train) Row Count Exact Preservation (10,000 rows)",File: train_source1.tsv,N/A,N/A,row_count,"10,000","10,000",PASS
+ZERO_LOSS_Source 1 (Train)_ID_INTEGRITY,Zero Information Loss,Source 1 (Train) Entity ID Alignment & Order Integrity,File: train_source1.tsv,N/A,N/A,entity_id,Exact sequence match,Exact sequence match,PASS
+ZERO_LOSS_Source 1 (Train)_RAW_COLUMNS,Zero Information Loss,Source 1 (Train) Preservation of All Raw Columns,File: train_source1.tsv,N/A,N/A,raw_columns,"['entity_id', 'business_name', 'business_address', 'country']","['entity_id', 'business_name', 'business_address', 'country']",PASS
+ZERO_LOSS_Source 2 (Train)_ROW_COUNT,Zero Information Loss,"Source 2 (Train) Row Count Exact Preservation (10,000 rows)",File: train_source2.tsv,N/A,N/A,row_count,"10,000","10,000",PASS
+ZERO_LOSS_Source 2 (Train)_ID_INTEGRITY,Zero Information Loss,Source 2 (Train) Entity ID Alignment & Order Integrity,File: train_source2.tsv,N/A,N/A,entity_id,Exact sequence match,Exact sequence match,PASS
+ZERO_LOSS_Source 2 (Train)_RAW_COLUMNS,Zero Information Loss,Source 2 (Train) Preservation of All Raw Columns,File: train_source2.tsv,N/A,N/A,raw_columns,"['entity_id', 'business_name', 'business_address', 'country']","['entity_id', 'business_name', 'business_address', 'country']",PASS
+ZERO_LOSS_Source 3 (Train)_ROW_COUNT,Zero Information Loss,"Source 3 (Train) Row Count Exact Preservation (10,000 rows)",File: train_source3.tsv,N/A,N/A,row_count,"10,000","10,000",PASS
+ZERO_LOSS_Source 3 (Train)_ID_INTEGRITY,Zero Information Loss,Source 3 (Train) Entity ID Alignment & Order Integrity,File: train_source3.tsv,N/A,N/A,entity_id,Exact sequence match,Exact sequence match,PASS
+ZERO_LOSS_Source 3 (Train)_RAW_COLUMNS,Zero Information Loss,Source 3 (Train) Preservation of All Raw Columns,File: train_source3.tsv,N/A,N/A,raw_columns,"['entity_id', 'business_name', 'business_address', 'country']","['entity_id', 'business_name', 'business_address', 'country']",PASS

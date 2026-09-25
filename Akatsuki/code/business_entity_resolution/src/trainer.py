@@ -31,7 +31,7 @@ from typing import Dict, List, Optional, Tuple
 
 import numpy as np
 import pandas as pd
-from sklearn.model_selection import StratifiedKFold
+from sklearn.model_selection import StratifiedKFold, GroupKFold
 from sklearn.metrics import precision_score, recall_score
 import lightgbm as lgb
 
@@ -168,18 +168,28 @@ class EntityMatchTrainer:
         n_neg = int(len(self.y) - n_pos)
         log.info(f"  Rows={len(self.df):,}  Positives={n_pos:,}  Negatives={n_neg:,}")
         # Adjust scale_pos_weight for class imbalance
-        if n_neg > 0:
+        if n_neg > 0 and n_pos > 0:
             self.best_params["scale_pos_weight"] = round(n_neg / n_pos, 3)
+        else:
+            self.best_params["scale_pos_weight"] = 1.0
+
 
     # ── Cross-Validation ──────────────────────────────────────────────────
     def cross_validate(self) -> float:
-        """Stratified 5-fold CV; returns mean Macro F0.5."""
-        log.info(f"Running {self.CV_FOLDS}-fold Stratified Cross-Validation...")
-        skf = StratifiedKFold(n_splits=self.CV_FOLDS, shuffle=True, random_state=42)
+        """5-fold GroupKFold CV grouped by source1_id; returns mean Macro F0.5."""
+        log.info(f"Running {self.CV_FOLDS}-fold GroupKFold Cross-Validation (Group = source1_id)...")
+        gkf = GroupKFold(n_splits=self.CV_FOLDS)
+        groups = self.df["source1_id"].values
         fold_scores = []
         fold_thresholds = []
 
-        for fold, (train_idx, val_idx) in enumerate(skf.split(self.X, self.y)):
+        for fold, (train_idx, val_idx) in enumerate(gkf.split(self.X, self.y, groups=groups)):
+            # Audit zero S1 entity leakage
+            train_s1 = set(self.df.iloc[train_idx]["source1_id"])
+            val_s1 = set(self.df.iloc[val_idx]["source1_id"])
+            overlap = train_s1 & val_s1
+            assert len(overlap) == 0, f"Entity leakage detected in fold {fold+1}: {len(overlap)} S1 entities overlap!"
+
             X_tr, y_tr = self.X[train_idx], self.y[train_idx]
             X_val, y_val = self.X[val_idx], self.y[val_idx]
 
@@ -205,7 +215,7 @@ class EntityMatchTrainer:
             fold_scores.append(opt_f)
             fold_thresholds.append(opt_t)
             log.info(f"  Fold {fold+1}/{self.CV_FOLDS}  F0.5={opt_f:.4f}  @t={opt_t:.2f}"
-                     f"  best_iter={model.best_iteration}")
+                     f"  best_iter={model.best_iteration}  (0 S1 entity leakage verified)")
 
         self.cv_scores = fold_scores
         self.best_threshold = float(np.mean(fold_thresholds))

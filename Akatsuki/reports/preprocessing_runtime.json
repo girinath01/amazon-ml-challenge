@@ -1,0 +1,70 @@
+{
+  "pipeline_name": "Akatsuki Preprocessing Audit & Verification Layer",
+  "timestamp": "2026-09-25 16:03:31",
+  "environment": {
+    "python_version": "3.11.9",
+    "os": "win32",
+    "memory_monitor": "tracemalloc"
+  },
+  "performance_metrics": {
+    "runtime_seconds": 18.1602,
+    "peak_memory_mb": 39.46,
+    "total_rows_processed": 30000,
+    "overall_throughput_rows_per_sec": 1651.96,
+    "rows_before": 30000,
+    "rows_after": 30000,
+    "row_loss_count": 0,
+    "row_loss_percentage": 0.0
+  },
+  "field_audit_summary": {
+    "audited_fields_count": 10,
+    "audited_fields": [
+      "name_norm",
+      "name_core",
+      "name_sorted_tokens",
+      "name_translit",
+      "address_norm",
+      "address_numbers",
+      "house_number",
+      "postal_code",
+      "address_missing",
+      "country_norm"
+    ],
+    "total_tests_executed": 30,
+    "passed_tests": 30,
+    "failed_tests": 0,
+    "field_integrity_status": "100% VERIFIED PASS"
+  },
+  "dataset_sources_audit": [
+    {
+      "source": "Source 1 (Train)",
+      "file": "train_source1.tsv",
+      "rows_before": 10000,
+      "rows_after": 10000,
+      "row_loss_count": 0,
+      "elapsed_seconds": 5.8644,
+      "rows_per_second": 1705.2,
+      "validation_passed": true
+    },
+    {
+      "source": "Source 2 (Train)",
+      "file": "train_source2.tsv",
+      "rows_before": 10000,
+      "rows_after": 10000,
+      "row_loss_count": 0,
+      "elapsed_seconds": 5.7311,
+      "rows_per_second": 1744.86,
+      "validation_passed": true
+    },
+    {
+      "source": "Source 3 (Train)",
+      "file": "train_source3.tsv",
+      "rows_before": 10000,
+      "rows_after": 10000,
+      "row_loss_count": 0,
+      "elapsed_seconds": 5.3751,
+      "rows_per_second": 1860.43,
+      "validation_passed": true
+    }
+  ]
+}

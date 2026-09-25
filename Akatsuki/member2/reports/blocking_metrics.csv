@@ -1,2 +1,2 @@
-split,sample_nrows,overall_recall_pct,total_gt_pairs,found_gt_pairs,total_s1_records,total_candidate_pairs,mean_candidates_per_s1,median_candidates_per_s1,p95_candidates_per_s1,p99_candidates_per_s1,max_candidates_per_s1,zero_candidate_s1_count
-train,100,0.0,343,0,100.0,4290.0,42.9,34.0,101.14999999999999,156.05,161.0,0.0
+sample_nrows,overall_recall_pct,s2_recall_pct,s3_recall_pct,us_recall_pct,india_recall_pct,total_gt_pairs,found_gt_pairs,total_s1_records,total_candidate_pairs,mean_candidates_per_s1,median_candidates_per_s1,p95_candidates_per_s1,p99_candidates_per_s1,max_candidates_per_s1,zero_candidate_s1_count
+5000,0.432,0.428,0.436,0.4,0.0,17362,75,5000.0,488321.0,97.6642,100.0,108.0,200.0,200.0,0.0

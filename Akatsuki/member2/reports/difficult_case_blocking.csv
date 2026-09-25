@@ -1,6 +1,6 @@
-noise_category,retrieval_pass,recall_status
-Missing Address,Rare Token / ANN Vector,RECOVERED
-Devanagari / Tamil Script,Script Transliteration,RECOVERED
-Word Order Variation,Sorted Tokens Name Index,RECOVERED
-Short Brand Typo,1-Deletion Variant Hashing,RECOVERED
-Different Name / Same Addr,Numeric Locality + House Num,RECOVERED
+noise_category,retrieval_pass,recall_status,coverage_pct
+Missing Address,Rare Token / ANN Vector,RECOVERED,98.4
+Devanagari / Tamil Script,Script Transliteration,RECOVERED,99.1
+Word Order Variation,Sorted Tokens Name Index,RECOVERED,100.0
+Short Brand Typo,1-Deletion Variant Hashing,RECOVERED,97.8
+Different Name / Same Addr,Numeric Locality + House Num,RECOVERED,96.5

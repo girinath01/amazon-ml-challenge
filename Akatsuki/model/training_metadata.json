@@ -1,0 +1,105 @@
+{
+  "timestamp": "2026-09-25T13:04:55",
+  "num_train_pairs": 50424,
+  "num_features": 28,
+  "feature_names": [
+    "name_exact",
+    "name_jaccard",
+    "name_levenshtein",
+    "name_jaro_winkler",
+    "name_token_sort",
+    "name_token_set",
+    "name_char3_cosine",
+    "name_char4_cosine",
+    "name_core_similarity",
+    "name_translit_similarity",
+    "address_jaccard",
+    "address_levenshtein",
+    "address_char3_cosine",
+    "address_digit_overlap",
+    "house_number_match",
+    "postal_code_match",
+    "address_exact",
+    "address_missing",
+    "country_match",
+    "name_length_ratio",
+    "address_length_ratio",
+    "name_token_count_difference",
+    "address_token_count_difference",
+    "numeric_conflict",
+    "name_address_similarity_product",
+    "name_high_address_low",
+    "name_high_address_high",
+    "name_address_conflict"
+  ],
+  "cv_folds": 5,
+  "cv_f05_scores": [
+    0.99846,
+    0.9984,
+    0.9991,
+    0.99797,
+    0.99826
+  ],
+  "cv_mean_f05": 0.99844,
+  "cv_std_f05": 0.00037,
+  "optimal_threshold": 0.592,
+  "best_lgbm_params": {
+    "objective": "binary",
+    "metric": "binary_logloss",
+    "boosting_type": "gbdt",
+    "num_leaves": 63,
+    "learning_rate": 0.05,
+    "feature_fraction": 0.8,
+    "bagging_fraction": 0.8,
+    "bagging_freq": 5,
+    "min_child_samples": 20,
+    "reg_alpha": 0.1,
+    "reg_lambda": 1.0,
+    "scale_pos_weight": 0.461,
+    "n_jobs": -1,
+    "seed": 42,
+    "verbose": -1
+  },
+  "top10_features": [
+    {
+      "feature": "address_jaccard",
+      "gain": 231848.92999814203
+    },
+    {
+      "feature": "address_char3_cosine",
+      "gain": 58915.65177859251
+    },
+    {
+      "feature": "address_digit_overlap",
+      "gain": 16682.722317439388
+    },
+    {
+      "feature": "name_char3_cosine",
+      "gain": 9974.86564757184
+    },
+    {
+      "feature": "name_core_similarity",
+      "gain": 9630.860132001064
+    },
+    {
+      "feature": "address_length_ratio",
+      "gain": 6389.792356703837
+    },
+    {
+      "feature": "numeric_conflict",
+      "gain": 3482.3910216140503
+    },
+    {
+      "feature": "name_char4_cosine",
+      "gain": 2795.3680947598523
+    },
+    {
+      "feature": "name_translit_similarity",
+      "gain": 2416.924693972414
+    },
+    {
+      "feature": "name_jaccard",
+      "gain": 1890.2949635125365
+    }
+  ]
+}

@@ -6,6 +6,7 @@ from .address_block import block_address_rare
 from .numeric_block import build_numeric_locality_index, block_numeric_locality
 from .transliteration_block import build_translit_index, block_transliteration
 from .ann_name_retrieval import build_and_query_ann_per_country
+from .phonetic_block import build_phonetic_index, block_phonetic
 from .candidate_union import union_candidate_passes
 from .candidate_pruning import prune_candidate_matrix, format_to_tsv
 from .candidate_generator import run_candidate_generation_pipeline
@@ -23,6 +24,8 @@ __all__ = [
     "build_translit_index",
     "block_transliteration",
     "build_and_query_ann_per_country",
+    "build_phonetic_index",
+    "block_phonetic",
     "union_candidate_passes",
     "prune_candidate_matrix",
     "format_to_tsv",

@@ -20,6 +20,7 @@ PASS_PRIORITY = {
     "block_address": 5,
     "block_numeric": 6,
     "block_ann": 7,
+    "block_phonetic": 8,
 }
 
 

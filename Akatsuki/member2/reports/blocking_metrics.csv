@@ -1,2 +1,2 @@
-split,overall_recall_pct,total_gt_pairs,found_gt_pairs,total_s1_records,total_candidate_pairs,mean_candidates_per_s1,median_candidates_per_s1,p95_candidates_per_s1,p99_candidates_per_s1,max_candidates_per_s1,zero_candidate_s1_count
-train,0.0,3444,0,1000.0,31875.0,31.875,28.0,78.0,99.0,109.0,24.0
+split,sample_nrows,overall_recall_pct,total_gt_pairs,found_gt_pairs,total_s1_records,total_candidate_pairs,mean_candidates_per_s1,median_candidates_per_s1,p95_candidates_per_s1,p99_candidates_per_s1,max_candidates_per_s1,zero_candidate_s1_count
+train,1000,0.0,3444,0,1000.0,83648.0,83.648,99.0,111.0,176.01999999999998,200.0,0.0

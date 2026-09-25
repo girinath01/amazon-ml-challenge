@@ -3,12 +3,18 @@ blocking/candidate_generator.py
 -------------------------------
 Master Blocking Pipeline Generator for Business Entity Resolution Challenge.
 
-Executes all candidate generation passes B0 through B5 sequentially,
-generating:
+Executes candidate generation passes B0 through B7 sequentially:
+  B0: Dynamic Country Partitioning (+ UNKNOWN Fallback)
+  B1: Exact, Core & Sorted Tokens Name Blocking + 1-Deletion Variant Hashing
+  B2: Address & Numeric Locality Blocking
+  B3: Script Transliteration Blocking
+  B4: Hybrid Word+Char TF-IDF Vector Retrieval
+  B7: Soundex Phonetic Token Blocking (Supplemental)
+  B5: Candidate Union & Adaptive Budget Pruning
+
+Generates:
   1. candidate_pairs_long.parquet (Long matrix with blocking provenance flags)
   2. candidate_pairs.tsv (Official candidate TSV format)
-
-Supports split='train' or 'test'.
 """
 
 import logging
@@ -23,6 +29,7 @@ from blocking.candidate_union import union_candidate_passes
 from blocking.country_partition import build_country_indexes, filter_by_country
 from blocking.exact_name_block import block_exact_and_core_name, build_name_indexes
 from blocking.numeric_block import block_numeric_locality, build_numeric_locality_index
+from blocking.phonetic_block import block_phonetic, build_phonetic_index
 from blocking.token_block import block_rare_tokens, build_rare_token_index
 from blocking.transliteration_block import block_transliteration, build_translit_index
 
@@ -37,13 +44,13 @@ def run_candidate_generation_pipeline(
     max_total_per_s1: int = 200,
 ) -> Tuple[pd.DataFrame, pd.DataFrame, Dict[str, float]]:
     """
-    Runs the upgraded multi-pass blocking pipeline across preprocessed S1, S2, and S3 DataFrames.
+    Runs the multi-pass blocking pipeline across preprocessed S1, S2, and S3 DataFrames.
     
     Args:
         df_s1: Preprocessed Source 1 DataFrame
         df_s2: Preprocessed Source 2 DataFrame
         df_s3: Preprocessed Source 3 DataFrame
-        passes_to_run: List of pass names to execute. If None, runs all B0-B4 passes.
+        passes_to_run: List of pass names to execute. If None, runs all B0-B7 passes.
         max_total_per_s1: Maximum candidate budget per S1 entity
         
     Returns:
@@ -52,7 +59,7 @@ def run_candidate_generation_pipeline(
         timing_dict: Execution duration in seconds per pass
     """
     if passes_to_run is None:
-        passes_to_run = ["b0", "b1", "b2", "b3", "b4"]
+        passes_to_run = ["b0", "b1", "b2", "b3", "b4", "b7"]
 
     timing_dict: Dict[str, float] = {}
     pass_results: Dict[str, Dict[str, set]] = {}
@@ -125,6 +132,17 @@ def run_candidate_generation_pipeline(
         )
         pass_results["block_ann"] = cand_ann
         timing_dict["b4_ann"] = time.time() - t0
+
+    # -------------------------------------------------------------
+    # Pass B7 — Soundex Phonetic Blocking (Supplemental)
+    # -------------------------------------------------------------
+    if "b7" in passes_to_run:
+        t0 = time.time()
+        logger.info("Executing Pass B7: Soundex Phonetic Blocking...")
+        phonetic_idx, _ = build_phonetic_index(df_s2, df_s3, max_freq_cap=100)
+        cand_phonetic = block_phonetic(df_s1, phonetic_idx, max_candidates_per_s1=30)
+        pass_results["block_phonetic"] = cand_phonetic
+        timing_dict["b7_phonetic"] = time.time() - t0
 
     # -------------------------------------------------------------
     # Pass B5 — Union & Adaptive Pruning

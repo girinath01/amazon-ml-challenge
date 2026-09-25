@@ -1,7 +1,7 @@
 """
 blocking/candidate_union.py
 ---------------------------
-Merges candidate sets from multiple blocking passes B0–B4 into a unified,
+Merges candidate sets from multiple blocking passes B0–B7 into a unified,
 deduplicated candidate table with boolean provenance flags.
 """
 
@@ -19,13 +19,14 @@ def union_candidate_passes(
     Args:
         pass_results: Dict mapping pass_name -> Dict[s1_id -> Set[candidate_id]]
                       Pass names: 'block_exact_name', 'block_core', 'block_rare_token',
-                                  'block_address', 'block_numeric', 'block_translit', 'block_ann'
+                                  'block_address', 'block_numeric', 'block_translit',
+                                  'block_ann', 'block_phonetic'
         all_s1_ids: List of all S1 entity_ids (ensures every S1 is present)
         
     Returns:
         DataFrame with columns:
             source1_id, candidate_id, block_exact_name, block_core, block_rare_token,
-            block_address, block_numeric, block_translit, block_ann
+            block_address, block_numeric, block_translit, block_ann, block_phonetic
     """
     flag_columns = [
         "block_exact_name",
@@ -35,6 +36,7 @@ def union_candidate_passes(
         "block_numeric",
         "block_translit",
         "block_ann",
+        "block_phonetic",
     ]
 
     # Structure: (s1_id, candidate_id) -> Dict[flag_col -> bool]

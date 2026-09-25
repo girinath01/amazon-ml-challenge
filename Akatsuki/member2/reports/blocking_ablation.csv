@@ -1,0 +1,9 @@
+pass_code,pass_name,recall_pct,runtime_sec
+B0,Country Partition + UNKNOWN Fallback,0.0,0.023
+B1,"+ Exact, Core & Sorted Tokens Name",0.0,0.165
+B2,+ Rare Token & Deletion Hash,0.0,0.272
+B3,+ Address & Numeric Locality,0.0,0.449
+B4,+ Script Transliteration,0.0,0.068
+B5,+ Hybrid Word+Char TF-IDF Cosine,0.0,2.172
+B6,+ Supplemental Soundex Phonetic,0.0,0.302
+B7_union,UNION + Adaptive Pruning,0.0,5.522

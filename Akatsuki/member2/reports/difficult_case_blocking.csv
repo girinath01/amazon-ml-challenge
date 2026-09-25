@@ -1,0 +1,6 @@
+noise_category,retrieval_pass,recall_status
+Missing Address,Rare Token / ANN Vector,RECOVERED
+Devanagari / Tamil Script,Script Transliteration,RECOVERED
+Word Order Variation,Sorted Tokens Name Index,RECOVERED
+Short Brand Typo,1-Deletion Variant Hashing,RECOVERED
+Different Name / Same Addr,Numeric Locality + House Num,RECOVERED

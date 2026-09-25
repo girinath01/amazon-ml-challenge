@@ -39,19 +39,8 @@ class PairBuilder:
         np.random.seed(seed)
         
         if dataset_dir is None:
-            # Look in standard locations
-            candidates = [
-                Path("student_resource/dataset"),
-                Path("../student_resource/dataset"),
-                Path("../../student_resource/dataset"),
-                Path(r"C:\Users\appu2\OneDrive\Desktop\ML AMAZON\student_resource\dataset")
-            ]
-            for c in candidates:
-                if c.exists() and (c / "train").exists():
-                    self.dataset_dir = c
-                    break
-            else:
-                self.dataset_dir = Path("student_resource/dataset")
+            from data_loader import find_default_dataset_dir
+            self.dataset_dir = find_default_dataset_dir()
         else:
             self.dataset_dir = Path(dataset_dir)
             

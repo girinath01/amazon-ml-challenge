@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-09-25T13:04:55",
-  "num_train_pairs": 50424,
+  "timestamp": "2026-09-25T14:58:03",
+  "num_train_pairs": 25104,
   "num_features": 28,
   "feature_names": [
     "name_exact",
@@ -34,15 +34,15 @@
   ],
   "cv_folds": 5,
   "cv_f05_scores": [
-    0.99846,
-    0.9984,
-    0.9991,
-    0.99797,
-    0.99826
+    0.99919,
+    0.99761,
+    0.99768,
+    0.99855,
+    0.99832
   ],
-  "cv_mean_f05": 0.99844,
-  "cv_std_f05": 0.00037,
-  "optimal_threshold": 0.592,
+  "cv_mean_f05": 0.99827,
+  "cv_std_f05": 0.00058,
+  "optimal_threshold": 0.568,
   "best_lgbm_params": {
     "objective": "binary",
     "metric": "binary_logloss",
@@ -55,7 +55,7 @@
     "min_child_samples": 20,
     "reg_alpha": 0.1,
     "reg_lambda": 1.0,
-    "scale_pos_weight": 0.461,
+    "scale_pos_weight": 0.455,
     "n_jobs": -1,
     "seed": 42,
     "verbose": -1
@@ -63,43 +63,43 @@
   "top10_features": [
     {
       "feature": "address_jaccard",
-      "gain": 231848.92999814203
+      "gain": 121876.19841641268
     },
     {
       "feature": "address_char3_cosine",
-      "gain": 58915.65177859251
+      "gain": 21709.826058969564
     },
     {
       "feature": "address_digit_overlap",
-      "gain": 16682.722317439388
-    },
-    {
-      "feature": "name_char3_cosine",
-      "gain": 9974.86564757184
+      "gain": 8117.689320961654
     },
     {
       "feature": "name_core_similarity",
-      "gain": 9630.860132001064
+      "gain": 6437.252690473149
     },
     {
       "feature": "address_length_ratio",
-      "gain": 6389.792356703837
-    },
-    {
-      "feature": "numeric_conflict",
-      "gain": 3482.3910216140503
+      "gain": 3593.8777228231884
     },
     {
       "feature": "name_char4_cosine",
-      "gain": 2795.3680947598523
+      "gain": 2049.2888948327436
+    },
+    {
+      "feature": "numeric_conflict",
+      "gain": 1818.1335726629914
+    },
+    {
+      "feature": "name_char3_cosine",
+      "gain": 1579.2726665408743
     },
     {
       "feature": "name_translit_similarity",
-      "gain": 2416.924693972414
+      "gain": 1239.0841957731825
     },
     {
-      "feature": "name_jaccard",
-      "gain": 1890.2949635125365
+      "feature": "name_jaro_winkler",
+      "gain": 925.1527602752044
     }
   ]
 }

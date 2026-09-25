@@ -107,14 +107,8 @@ def load_source(path: Path, needed_ids: Optional[Set[str]] = None,
 
 
 def find_dataset_dir() -> Path:
-    candidates = [
-        _PROJ_ROOT / "student_resource" / "dataset",
-        Path(r"C:\Users\appu2\OneDrive\Desktop\ML AMAZON\student_resource\dataset"),
-    ]
-    for c in candidates:
-        if c.exists():
-            return c
-    raise FileNotFoundError("Cannot locate student_resource/dataset/")
+    from data_loader import find_default_dataset_dir
+    return find_default_dataset_dir()
 
 
 # ── Inference class ────────────────────────────────────────────────────────

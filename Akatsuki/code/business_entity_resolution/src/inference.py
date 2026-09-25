@@ -324,3 +324,9 @@ class EntityMatchInference:
         log.info(f"  Pairs scored     : {len(pairs):,}")
         log.info(f"  Submission file  : {RESULTS_TSV}")
         log.info(f"{'='*60}")
+
+
+if __name__ == "__main__":
+    inf = EntityMatchInference()
+    inf.run()
+

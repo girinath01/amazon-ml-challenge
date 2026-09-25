@@ -1,0 +1,148 @@
+source1_id,candidate_id,error_type,true_label,predicted_probability,name_jaccard,address_jaccard,name_char3_cosine,address_char3_cosine,numeric_conflict,address_missing,reason_category
+S1-469262153,S3-279054627,False Negative,1,0.83233,0.6,0.1538,0.4536,0.5695,0,0,multi-match failure
+S1-984476715,S3-326476730,False Negative,1,0.66101,0.5714,0.1538,0.7607,0.5295,1,0,numeric conflict
+S1-951159035,S2-875950440,False Negative,1,0.00462,0.3333,0.0,0.169,0.0,0,1,missing address
+S1-608665359,S2-724200656,False Positive,0,0.98539,0.25,0.6667,0.3693,0.92,1,0,numeric conflict
+S1-606109978,S3-558509835,False Negative,1,0.55397,0.6,0.0,0.7702,0.0,0,1,missing address
+S1-845942312,S2-992829478,False Positive,0,0.9988,1.0,0.0,1.0,0.0,0,1,high name similarity + wrong address
+S1-934076354,S3-991187075,False Negative,1,0.45487,0.3333,0.0588,0.6842,0.2425,0,0,multi-match failure
+S1-931070977,S3-828529196,False Positive,0,0.97488,0.5,0.0,0.5779,0.0,0,1,missing address
+S1-356833714,S2-399899507,False Positive,0,0.91516,0.4,0.0,0.6482,0.0,0,1,missing address
+S1-548949826,S3-789457400,False Negative,1,0.72673,0.5,0.25,0.6656,0.7441,1,0,numeric conflict
+S1-734993216,S3-475290153,False Negative,1,0.36263,0.6,0.0,0.6923,0.0,0,1,missing address
+S1-360026263,S2-78385488,False Negative,1,0.27448,0.3333,0.0,0.7231,0.0,0,1,missing address
+S1-378731227,S2-53345568,False Negative,1,0.73612,0.1667,0.3,0.5303,0.4621,1,0,numeric conflict
+S1-123886742,S3-203911406,False Negative,1,0.7513,0.25,0.1111,0.4009,0.2828,0,0,cross-script/transliteration
+S1-766377417,S3-539279884,False Negative,1,0.79035,0.6,0.25,0.6205,0.4562,0,0,multi-match failure
+S1-408417846,S3-294631379,False Negative,1,0.54134,1.0,0.0,1.0,0.057,1,0,numeric conflict
+S1-204552244,S2-104840992,False Positive,0,0.90806,0.3333,0.0,0.7135,0.0,0,1,missing address
+S1-973717755,S2-940499387,False Negative,1,0.68937,0.3333,0.0,0.5942,0.0,0,1,missing address
+S1-9455909,S3-384632970,False Negative,1,0.14048,0.0,0.1053,0.0,0.2619,1,0,numeric conflict
+S1-254440362,S3-734943831,False Negative,1,0.70076,0.5,0.0,0.4384,0.0,0,1,missing address
+S1-118687984,S3-13874327,False Positive,0,0.91897,0.6,0.0625,0.8287,0.1807,0,0,false positive (borderline score)
+S1-118198262,S2-615813343,False Negative,1,0.1155,0.4,0.0,0.3946,0.0,0,1,missing address
+S1-296672331,S2-933820692,False Positive,0,0.90246,0.2,0.25,0.3464,0.542,0,0,false positive (borderline score)
+S1-484394919,S3-572950432,False Negative,1,0.84265,0.75,0.0,0.647,0.0,0,1,missing address
+S1-780487368,S2-572629778,False Negative,1,0.74148,0.5,0.0,0.5583,0.0,0,1,missing address
+S1-988131510,S2-355055649,False Positive,0,0.99911,0.6667,0.75,0.7255,0.8378,1,0,numeric conflict
+S1-574873538,S3-590941398,False Positive,0,0.97106,0.5,0.0,0.7906,0.0,0,1,missing address
+S1-297294757,S3-831604513,False Positive,0,0.97494,0.1429,0.1333,0.0853,0.3869,0,0,false positive (borderline score)
+S1-165422067,S2-595759579,False Negative,1,0.11239,0.5,0.0,0.4009,0.0,0,1,missing address
+S1-825774567,S3-962279543,False Negative,1,0.51013,0.0,0.0476,0.0,0.2551,0,0,multi-match failure
+S1-625184406,S2-250562706,False Negative,1,0.00028,0.0,0.05,0.2596,0.1493,1,0,numeric conflict
+S1-103076340,S3-476022724,False Positive,0,0.86843,0.4,0.0,0.3464,0.0,0,1,missing address
+S1-342698190,S3-478289654,False Negative,1,0.49273,0.3333,0.0,0.7071,0.0,0,1,missing address
+S1-391664892,S3-841672111,False Negative,1,0.04518,0.0,0.1,0.0,0.3831,1,0,numeric conflict
+S1-815519296,S2-586792277,False Positive,0,0.99932,0.6,0.7143,0.78,0.8261,1,0,numeric conflict
+S1-74060985,S2-658579059,False Positive,0,0.99493,0.75,0.0,0.8463,0.0,0,1,high name similarity + wrong address
+S1-966390262,S2-386268013,False Negative,1,0.61775,0.5,0.0,0.575,0.0,0,1,missing address
+S1-737084148,S3-475290153,False Positive,0,0.8673,0.5,0.0,0.621,0.0,0,1,missing address
+S1-931827058,S3-891428899,False Negative,1,0.27923,0.0,0.1429,0.3381,0.2818,0,0,cross-script/transliteration
+S1-739576263,S2-999050005,False Negative,1,0.78173,0.5,0.1111,0.4919,0.4022,0,0,multi-match failure
+S1-40930902,S2-971176262,False Positive,0,0.97766,0.6667,0.0,0.7206,0.0,0,1,missing address
+S1-418041254,S3-431950810,False Negative,1,0.09353,0.0,0.125,0.336,0.462,0,0,cross-script/transliteration
+S1-508052111,S2-418546968,False Negative,1,0.8098,0.6,0.1364,0.6208,0.3875,0,0,multi-match failure
+S1-833492633,S3-163537924,False Negative,1,0.5119,0.4,0.0,0.5307,0.0,0,1,missing address
+S1-685556943,S3-834878565,False Negative,1,0.69519,0.6667,0.0,0.2887,0.0,0,1,missing address
+S1-849274176,S2-34421487,False Negative,1,0.76721,0.0,0.1333,0.0,0.2397,0,0,cross-script/transliteration
+S1-10028299,S3-50398053,False Negative,1,0.12875,0.4,0.0,0.2315,0.0,0,1,missing address
+S1-907412145,S3-897110563,False Negative,1,0.80241,0.2857,0.0,0.6994,0.0,0,1,missing address
+S1-216931030,S2-953618448,False Negative,1,0.6806,0.5,0.0,0.7906,0.0,0,1,missing address
+S1-99545264,S3-758264499,False Negative,1,0.7474,0.0,0.2,0.0,0.364,1,0,numeric conflict
+S1-819966462,S3-149143737,False Negative,1,0.79884,0.0,0.2222,0.0,0.2214,0,0,cross-script/transliteration
+S1-300289723,S3-918851466,False Negative,1,0.19054,0.5,0.0,0.5117,0.0,0,1,missing address
+S1-685871904,S3-740323634,False Negative,1,0.36908,0.4,0.0,0.3586,0.0,0,1,missing address
+S1-206569853,S2-650042785,False Negative,1,0.80537,0.0,0.1818,0.0,0.6072,1,0,numeric conflict
+S1-96335666,S3-394091292,False Negative,1,0.54789,0.6,0.087,0.7128,0.2469,0,0,multi-match failure
+S1-449777693,S2-391036435,False Positive,0,0.99974,0.8,0.7857,0.7825,0.9093,0,0,false positive (borderline score)
+S1-211017191,S3-534436607,False Negative,1,0.46136,0.4,0.0,0.7006,0.0,0,1,missing address
+S1-829743661,S3-326111194,False Negative,1,0.55272,0.5,0.0,0.5217,0.0,0,1,missing address
+S1-727602285,S3-204655096,False Negative,1,0.19761,0.6,0.2,0.5244,0.4756,1,0,numeric conflict
+S1-255643554,S3-336927608,False Negative,1,0.74224,0.0,0.1111,0.3807,0.2109,0,0,multi-match failure
+S1-722018025,S3-888466611,False Negative,1,0.7349,0.3333,0.3333,0.3636,0.4596,1,0,numeric conflict
+S1-893695207,S2-721917107,False Negative,1,0.7205,0.6,0.0,0.5204,0.0,0,1,missing address
+S1-333878383,S3-698988464,False Negative,1,0.52743,0.6,0.0,0.6583,0.0,0,1,missing address
+S1-533233593,S2-442878082,False Negative,1,0.45833,0.0,0.1429,0.0,0.1997,0,0,multi-match failure
+S1-990433106,S3-823878280,False Negative,1,0.5955,0.0,0.2308,0.0,0.5533,1,0,numeric conflict
+S1-695404178,S3-60578214,False Positive,0,0.95096,0.0,0.25,0.0,0.5,0,0,false positive (borderline score)
+S1-550605615,S3-199795606,False Negative,1,0.79748,0.5,0.0,0.5883,0.0,0,1,missing address
+S1-83647344,S3-175231511,False Negative,1,0.42885,0.6,0.0,0.6543,0.0,0,1,missing address
+S1-556351196,S3-475969579,False Positive,0,0.92853,0.3333,0.0,0.7071,0.0,0,1,missing address
+S1-997650748,S3-112695036,False Positive,0,0.91444,0.5,0.0,0.5774,0.0,0,1,missing address
+S1-481281376,S2-475059977,False Negative,1,0.07339,0.1667,0.0,0.4629,0.0,0,1,missing address
+S1-525970796,S2-318943995,False Negative,1,0.4675,0.1818,0.0,0.3112,0.0,0,1,missing address
+S1-116043204,S3-85523430,False Negative,1,0.41377,0.6,0.0,0.4915,0.0,0,1,missing address
+S1-837264242,S2-76961843,False Negative,1,0.80192,0.3333,0.0,0.6063,0.0,0,1,missing address
+S1-300598855,S3-94498484,False Negative,1,0.67376,0.6667,0.0,0.7717,0.0,0,1,missing address
+S1-469262153,S3-698722912,False Negative,1,0.62159,0.6,0.1111,0.4629,0.325,0,0,multi-match failure
+S1-495177163,S3-257624172,False Negative,1,0.80878,0.6,0.0,0.5564,0.0,0,1,missing address
+S1-666374733,S2-761951846,False Positive,0,0.99171,0.2857,0.4286,0.4282,0.7757,1,0,numeric conflict
+S1-359694049,S3-564723361,False Negative,1,0.1923,0.25,0.0,0.6363,0.0,0,1,missing address
+S1-408417846,S3-300188718,False Negative,1,0.5798,0.5,0.1667,0.5222,0.3909,1,0,numeric conflict
+S1-276829138,S2-585801078,False Positive,0,0.99414,0.6667,0.0,0.8944,0.0,0,1,missing address
+S1-101600459,S2-640299814,False Negative,1,0.62776,0.5,0.0,0.3785,0.0,0,1,missing address
+S1-774848541,S2-880969832,False Negative,1,0.02166,0.25,0.0,0.4629,0.0,0,1,missing address
+S1-153715376,S3-191757488,False Positive,0,0.99991,0.8,0.3333,0.9045,0.6222,0,0,same-name collision
+S1-303755060,S2-839533786,False Negative,1,0.17544,0.3333,0.0,0.4082,0.0,0,1,missing address
+S1-593702237,S3-224075241,False Negative,1,0.04892,1.0,0.0455,1.0,0.1598,1,0,numeric conflict
+S1-495351615,S3-667556917,False Negative,1,0.83132,0.6,0.0,0.6442,0.0,0,1,missing address
+S1-153500031,S3-973065130,False Negative,1,0.66385,0.2857,0.3,0.4383,0.6452,1,0,numeric conflict
+S1-837399164,S3-229511072,False Negative,1,0.78649,0.6,0.125,0.6677,0.2531,0,0,multi-match failure
+S1-663819576,S2-92209075,False Negative,1,0.22904,0.4,0.0,0.5789,0.0,0,1,missing address
+S1-209669739,S3-964593140,False Positive,0,0.90598,1.0,0.0,1.0,0.0304,1,0,numeric conflict
+S1-281782003,S2-407777795,False Positive,0,0.86703,0.6,0.2,0.7526,0.4688,0,0,false positive (borderline score)
+S1-165422067,S3-815943358,False Negative,1,0.31702,0.0,0.25,0.3273,0.4404,0,0,cross-script/transliteration
+S1-103101914,S3-464737380,False Negative,1,0.19757,0.3333,0.0,0.5966,0.0,0,1,missing address
+S1-781324018,S2-667191157,False Negative,1,0.66169,0.0,0.1176,0.0,0.2018,0,0,multi-match failure
+S1-620955468,S2-485392931,False Negative,1,0.74886,0.4,0.0,0.3518,0.0,0,1,missing address
+S1-675065181,S3-673673463,False Negative,1,0.38563,0.0,0.1429,0.3807,0.5753,1,0,numeric conflict
+S1-461012885,S3-266757077,False Negative,1,0.59846,0.5,0.0,0.5333,0.0,0,1,missing address
+S1-618610915,S2-585844822,False Negative,1,0.7687,0.6,0.0,0.6255,0.0,0,1,missing address
+S1-732689177,S2-54137948,False Negative,1,0.77429,0.75,0.0,0.8321,0.0,0,1,missing address
+S1-264679680,S2-192695882,False Positive,0,0.99973,0.6,0.5556,0.694,0.894,0,0,false positive (borderline score)
+S1-783518091,S3-59971944,False Positive,0,0.98648,0.6667,0.0,0.7246,0.0,0,1,singleton false match
+S1-730428166,S3-300514980,False Negative,1,0.64976,0.0,0.15,0.0,0.3152,0,0,cross-script/transliteration
+S1-351961485,S3-22610069,False Negative,1,0.03703,0.0,0.125,0.0,0.3806,1,0,numeric conflict
+S1-538163501,S2-832458802,False Negative,1,0.09847,0.3333,0.0,0.378,0.0,0,1,missing address
+S1-936762728,S2-468780590,False Positive,0,0.99198,0.1429,0.4,0.5147,0.6924,1,0,numeric conflict
+S1-648376479,S3-87215067,False Negative,1,0.76307,0.3333,0.0,0.513,0.0,0,1,missing address
+S1-9455909,S3-393934040,False Negative,1,0.67436,0.6667,0.1053,0.7579,0.2465,1,0,numeric conflict
+S1-378731227,S2-290115439,False Negative,1,0.82971,0.6,0.3,0.6444,0.4621,1,0,numeric conflict
+S1-827122880,S3-233305147,False Negative,1,0.00274,0.1429,0.0,0.2652,0.0,0,1,missing address
+S1-96335666,S3-761029389,False Negative,1,0.69012,0.75,0.0455,0.8452,0.0913,0,0,multi-match failure
+S1-674129778,S2-975982378,False Positive,0,0.99404,0.3333,0.6667,0.5893,0.8889,1,0,numeric conflict
+S1-453766911,S2-549387268,False Negative,1,0.24464,0.375,0.0,0.5927,0.0,0,1,missing address
+S1-889698574,S2-394608236,False Positive,0,0.99457,0.6667,0.7143,0.7906,0.8636,1,0,numeric conflict
+S1-641436989,S2-92430590,False Negative,1,0.22954,0.25,0.0,0.3536,0.0,0,1,missing address
+S1-460719022,S3-602049586,False Negative,1,0.75588,0.5,0.0,0.6325,0.0,0,1,missing address
+S1-798312676,S3-798360914,False Positive,0,0.977,0.0,0.2353,0.0,0.3229,1,0,numeric conflict
+S1-392534068,S3-878670505,False Negative,1,0.35942,0.25,0.0588,0.3125,0.1827,0,0,multi-match failure
+S1-681160793,S3-987734207,False Negative,1,0.82357,0.3333,0.1111,0.6124,0.1931,0,0,multi-match failure
+S1-971293452,S3-968522510,False Negative,1,0.0258,0.3333,0.0,0.4286,0.0,0,1,missing address
+S1-675065181,S3-884621418,False Negative,1,0.75766,0.0,0.1579,0.0,0.5721,1,0,numeric conflict
+S1-546177410,S2-648883949,False Negative,1,0.83547,0.25,0.0,0.6396,0.0,0,1,missing address
+S1-903379045,S2-297092754,False Negative,1,0.05473,0.0,0.1176,0.0,0.2335,0,0,cross-script/transliteration
+S1-931070977,S2-185075524,False Negative,1,0.0242,0.0,0.0,0.4139,0.0,0,1,missing address
+S1-984940763,S2-544993889,False Positive,0,0.99816,0.4444,0.0,0.7648,0.0,0,1,missing address
+S1-968115178,S3-631409134,False Negative,1,0.04305,0.0,0.0714,0.4211,0.0337,0,0,multi-match failure
+S1-760945453,S3-202730898,False Negative,1,0.81468,0.5,0.2353,0.7773,0.4511,0,0,multi-match failure
+S1-9455909,S3-133372803,False Negative,1,0.32039,0.0,0.1053,0.0,0.2705,1,0,numeric conflict
+S1-596946418,S2-675989169,False Negative,1,0.29426,0.3333,0.0,0.4423,0.0,0,1,missing address
+S1-689462468,S3-340047303,False Negative,1,0.78306,0.5,0.0,0.637,0.0,0,1,missing address
+S1-607884731,S3-939516170,False Negative,1,0.25139,0.0,0.1333,0.0,0.123,0,0,multi-match failure
+S1-391664892,S3-260917600,False Negative,1,0.72905,0.0,0.2,0.0,0.5658,1,0,numeric conflict
+S1-508052111,S2-341233412,False Negative,1,0.27877,0.0,0.1364,0.2752,0.3875,0,0,cross-script/transliteration
+S1-831090227,S3-261533299,False Negative,1,0.35437,0.2,0.0,0.5296,0.0,0,1,missing address
+S1-296806571,S3-906475287,False Negative,1,0.17086,0.4,0.0,0.4196,0.0,0,1,missing address
+S1-178022840,S3-968500624,False Negative,1,0.69239,0.5,0.25,0.5833,0.4445,1,0,numeric conflict
+S1-932763767,S3-124479077,False Negative,1,0.02042,0.3333,0.0,0.4003,0.0,0,1,missing address
+S1-522792425,S3-848224126,False Negative,1,0.46687,0.3333,0.2,0.559,0.4339,0,0,multi-match failure
+S1-849049594,S2-679487636,False Positive,0,0.9971,0.6,0.2941,0.6985,0.5704,0,0,false positive (borderline score)
+S1-905466466,S3-473625068,False Negative,1,0.67594,0.5,0.25,0.5883,0.561,1,0,numeric conflict
+S1-222115348,S2-10956131,False Negative,1,0.41604,0.0,0.125,0.3985,0.5504,0,0,cross-script/transliteration
+S1-804634352,S2-710082259,False Negative,1,0.39496,0.4,0.0,0.5571,0.0,0,1,missing address
+S1-82820917,S2-641930621,False Positive,0,0.97317,0.6667,0.0,0.7255,0.0,0,1,missing address
+S1-173163993,S3-17013823,False Positive,0,0.97564,0.3333,0.0,0.7242,0.0,0,1,missing address
+S1-756208495,S2-646268413,False Positive,0,0.95278,0.2222,0.6667,0.509,0.931,1,0,numeric conflict
+S1-161325793,S3-635424318,False Positive,0,0.99879,0.4286,0.6667,0.7055,0.8072,0,0,false positive (borderline score)
+S1-413648762,S2-971176262,False Negative,1,0.23919,0.6667,0.0,0.7206,0.0,0,1,missing address

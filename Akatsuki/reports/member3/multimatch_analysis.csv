@@ -1,0 +1,5 @@
+match_cardinality,entity_count,precision,recall,f05
+1 match,255,0.99216,0.99608,0.99259
+2 matches,885,0.99699,0.99435,0.99553
+3 matches,1242,0.99819,0.99329,0.99664
+4+ matches,2345,0.9988,0.99344,0.99728

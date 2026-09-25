@@ -1,0 +1,24 @@
+Dimension,Category,Count,Percentage,Notes
+Cardinality,Singleton (0 matches),123247,5.5848,S1 entities with no counterpart in S2 or S3; predict empty string; worth 1.0 macro-F0.5
+Cardinality,One Match (Exactly 1),119157,5.3995,S1 entities matching exactly one record from either S2 or S3
+Cardinality,Multi-Match (2+ matches),1964417,89.0157,Overwhelming majority of entities; up to 11 matching records across S2 and S3
+Source Breakdown,S2 Only,143029,6.4812,Matches present only in Source 2
+Source Breakdown,S3 Only,164498,7.4541,Matches present only in Source 3
+Source Breakdown,Both S2 + S3,1776047,80.4799,Matches present in both Source 2 and Source 3 (dominant pattern)
+Source Breakdown,No Match,123247,5.5848,No matches in either source
+Exact Match Count,0 matches,123247,5.5848,Entities with exactly 0 ground truth links
+Exact Match Count,1 matches,119157,5.3995,Entities with exactly 1 ground truth links
+Exact Match Count,2 matches,375212,17.0024,Entities with exactly 2 ground truth links
+Exact Match Count,3 matches,530841,24.0546,Entities with exactly 3 ground truth links
+Exact Match Count,4 matches,484115,21.9372,Entities with exactly 4 ground truth links
+Exact Match Count,5 matches,321957,14.5892,Entities with exactly 5 ground truth links
+Exact Match Count,6 matches,164868,7.4708,Entities with exactly 6 ground truth links
+Exact Match Count,7 matches,63968,2.8986,Entities with exactly 7 ground truth links
+Exact Match Count,8 matches,18680,0.8465,Entities with exactly 8 ground truth links
+Exact Match Count,9 matches,4205,0.1905,Entities with exactly 9 ground truth links
+Exact Match Count,10 matches,534,0.0242,Entities with exactly 10 ground truth links
+Exact Match Count,11 matches,37,0.0017,Entities with exactly 11 ground truth links
+Summary Metric,Total S1 Entities,2206821,100.0,Total reference entities in train_source1.tsv
+Summary Metric,Total Positive Links,7638365,346.13,"Total true positive (S1, S2/S3) pairs in training ground truth"
+Summary Metric,Total S2 Positive Links,3693619,167.37,Average 1.67 S2 matches per S1 entity
+Summary Metric,Total S3 Positive Links,3944746,178.75,Average 1.79 S3 matches per S1 entity
